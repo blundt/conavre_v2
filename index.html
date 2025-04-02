@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONAVRE | Inicio</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <!-- HERO PRINCIPAL CON VIDEO DE FONDO -->
+<section id="hero" class="hero-section">
+    <div class="hero-overlay"></div>
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="videos/C_VII_DOÑA_HELENA.mp4" type="video/mp4">
+      Tu navegador no soporta videos HTML5.
+    </video>
+  
+    <div class="hero-content">
+      <h1>Construimos y reparamos embarcaciones a tu medida</h1>
+      <p>Especialistas en fibra de vidrio, soluciones navales, campers y estructuras personalizadas</p>
+      <div class="hero-buttons">
+        <a href="#portafolio" class="btn-primary">Ver Proyectos</a>
+        <a href="#cotiza" class="btn-secondary">Cotiza tu Proyecto</a>
+      </div>
+    </div>
+  </section>
+<!-- SECCIÓN DE SERVICIOS DESTACADOS -->
+<section id="servicios" class="services-section">
+    <h2>Nuestros Servicios</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="img/servicio1.jpg" alt="Construcción de Embarcaciones">
+        <h3>Construcción de Embarcaciones</h3>
+        <p>Fabricación de embarcaciones nuevas, adaptadas a las necesidades de cada cliente.</p>
+      </div>
+      <div class="service-card">
+        <img src="img/servicio2.jpg" alt="Reparaciones Navales">
+        <h3>Reparaciones Navales</h3>
+        <p>Expertos en restauración, mantenimiento y modificación de embarcaciones.</p>
+      </div>
+      <div class="service-card">
+        <img src="img/servicio3.jpg" alt="Campers y Estructuras">
+        <h3>Campers y Estructuras Especiales</h3>
+        <p>Diseño y construcción de campers, módulos y estructuras en fibra de vidrio.</p>
+      </div>
+      <div class="service-card">
+        <img src="img/servicio4.jpg" alt="Diseños Personalizados">
+        <h3>Diseños Personalizados</h3>
+        <p>Soluciones únicas y a medida, desde la idea inicial hasta su materialización.</p>
+      </div>
+    </div>
+  </section>
+<!-- SECCIÓN DE PORTAFOLIO DE PROYECTOS -->
+<section id="portafolio" class="portfolio-section">
+    <h2>Proyectos Destacados</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-card">
+        <img src="img/proyecto1.jpg" alt="Proyecto 1">
+        <div class="portfolio-info">
+          <h3>Lancha de Patrullaje</h3>
+          <p>Construcción de lancha rápida para operaciones costeras. Fibra de vidrio reforzada.</p>
+          <a href="proyecto-doña-helena.html" class="btn-ver-mas">Ver más</a>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="img/proyecto2.jpg" alt="Proyecto 2">
+        <div class="portfolio-info">
+          <h3>Reparación Nave Pesquera</h3>
+          <p>Proceso completo de restauración estructural y pintura marina.</p>
+          <a href="#" class="btn-ver-mas">Ver más</a>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="img/proyecto3.jpg" alt="Proyecto 3">
+        <div class="portfolio-info">
+          <h3>Camper Personalizado</h3>
+          <p>Diseño y fabricación de camper modular para pick-up con interiores completos.</p>
+          <a href="#" class="btn-ver-mas">Ver más</a>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- SECCIÓN DE FORMULARIO DE COTIZACIÓN PERSONALIZADO -->
+<section id="cotiza" class="cotiza-section">
+    <h2>Cotiza tu Proyecto</h2>
+    <form class="cotiza-form" action="php/enviar-cotizacion.php" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="telefono">Teléfono (opcional):</label>
+        <input type="tel" id="telefono" name="telefono">
+      </div>
+  
+      <div class="form-group">
+        <label for="tipo">Tipo de Proyecto:</label>
+        <select id="tipo" name="tipo" required>
+          <option value="">Seleccione una opción</option>
+          <option value="construccion">Construcción de embarcación</option>
+          <option value="reparacion">Reparación / Mantenimiento</option>
+          <option value="estructura">Estructura personalizada / Camper</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="descripcion">Descripción del Proyecto:</label>
+        <textarea id="descripcion" name="descripcion" rows="5" required></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="archivo">Adjuntar imágenes o planos (opcional):</label>
+        <input type="file" id="archivo" name="archivo" accept="image/*,application/pdf">
+      </div>
+  
+      <button type="submit" class="btn-enviar">Enviar Cotización</button>
+    </form>
+  </section>
+<!-- SECCIÓN DE CONTACTO Y MAPA -->
+<section id="contacto" class="contacto-section">
+    <h2>Contáctanos</h2>
+    <div class="contacto-wrapper">
+      <div class="contacto-info">
+        <p><strong>Dirección:</strong> Av. Concon-Quintero Km2 - Parque Industrial Aconcagua, Lote #4, Quintero, Valparaíso</p>
+        <p><strong>Teléfono:</strong> <a href="tel:+56998219394">+56 9 9821 9394</a></p>
+        <p><strong>Email:</strong> <a href="mailto:contacto@conavre.com">contacto@conavre.com</a></p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/56998219394" target="_blank">Enviar mensaje</a></p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/astilleroconavre" target="_blank">
+            <img src="img/social/instagram.png" alt="Instagram">
+          </a>
+          <a href="https://www.facebook.com/share/rHzJa6TBPyL7xrec" target="_blank">
+            <img src="img/social/facebook.png" alt="Facebook">
+          </a>
+        </div>
+      </div>
+      <div class="contacto-mapa">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1934.8836985658593!2d-71.49421708855883!3d-32.91336405524258!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9689c3446b8ae9b3%3A0xa3277886227fd769!2sASTILLERO%20CONAVRE!5e0!3m2!1ses!2scl!4v1730324040725!5m2!1ses!2scl"
+          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FOOTER PROFESIONAL -->
+<footer class="footer-conavre">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="img/logo.png" alt="Logo Conavre">
+        <p>Especialistas en construcción, reparación y diseño de embarcaciones en fibra de vidrio.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Enlaces Rápidos</h4>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#portafolio">Portafolio</a></li>
+          <li><a href="#cotiza">Cotización</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-contacto">
+        <h4>Contacto</h4>
+        <p>Av. Concon-Quintero Km2 - Parque Industrial Aconcagua, Lote #4<br>Quintero, Valparaíso</p>
+        <p>+56 9 9821 9394</p>
+        <p><a href="mailto:contacto@conavre.com">contacto@conavre.com</a></p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/astilleroconavre" target="_blank">
+            <img src="img/social/instagram.png" alt="Instagram">
+          </a>
+          <a href="https://www.facebook.com/share/rHzJa6TBPyL7xrec" target="_blank">
+            <img src="img/social/facebook.png" alt="Facebook">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2024 Conavre. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  
+</body>
+</html>
