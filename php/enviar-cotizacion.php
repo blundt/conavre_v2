@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = htmlspecialchars($_POST['nombre']);
-    $correo = htmlspecialchars($_POST['correo']);
+    $correo = htmlspecialchars($_POST['email']);
     $telefono = htmlspecialchars($_POST['telefono']);
     $tipo = htmlspecialchars($_POST['tipo']);
     $descripcion = htmlspecialchars($_POST['descripcion']);
