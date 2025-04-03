@@ -17,8 +17,9 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
   z-index: 0;
 }
 
@@ -89,6 +90,12 @@
     display: block;
     margin: 10px auto;
   }
+
+  .hero-section {
+    height: auto;
+    padding: 60px 0;
+  }
+  
 }
 
 /* SECCIÓN DE SERVICIOS */
