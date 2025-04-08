@@ -171,7 +171,6 @@
 }
 
 
-
 /* SECCIÓN DE MODELOS */
 .modelos-section {
   padding: 60px 20px;
@@ -190,6 +189,7 @@
   color: var(--gris-texto);
 }
 
+/* TABLA DE MODELOS */
 .tabla-modelos table {
   width: 100%;
   border-collapse: collapse;
@@ -210,7 +210,7 @@
   font-weight: 600;
 }
 
-/* Estilo del botón para ficha técnica */
+/* BOTÓN PARA FICHA PDF */
 .btn-ficha {
   display: inline-flex;
   align-items: center;
@@ -226,7 +226,19 @@
 
 .btn-ficha:hover {
   background-color: var(--azul-marca);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* ÍCONO PDF */
+.icono-pdf {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.btn-ficha:hover .icono-pdf {
+  transform: scale(1.1);
+  filter: brightness(1.2);
 }
 
 /* Breadcrumb o Migas de Pan */
@@ -245,26 +257,20 @@
   text-decoration: underline;
 }
 
-
-/* Estilos para el ícono PDF */
-.icono-pdf {
-  width: 20px;
-  height: 20px;
-  vertical-align: middle;
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-/* Efecto hover en el botón completo */
-.btn-ficha:hover .icono-pdf {
-  transform: scale(1.1); /* agrandar suavemente */
-  filter: brightness(1.2); /* darle un pequeño brillo */
-}
-
-
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .tabla-modelos table, .tabla-modelos thead, .tabla-modelos tbody, .tabla-modelos th, .tabla-modelos td, .tabla-modelos tr {
+  .tabla-modelos table, 
+  .tabla-modelos thead, 
+  .tabla-modelos tbody, 
+  .tabla-modelos th, 
+  .tabla-modelos td, 
+  .tabla-modelos tr {
     display: block;
+  }
+
+  /* Ocultar encabezado azul en móvil */
+  .tabla-modelos thead {
+    display: none;
   }
 
   .tabla-modelos tr {
