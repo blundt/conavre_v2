@@ -162,6 +162,17 @@
   }
 }
 
+.servicios-extra {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.servicios-extra p {
+  margin-bottom: 20px;
+  color: var(--gris-texto);
+}
+
+
 /* SECCIÓN DE PORTAFOLIO */
 .portfolio-section {
   background-color: #fff;
