@@ -106,6 +106,72 @@
       align-items: center;
     }
   }
+
+/* Banner de múltiples imágenes */
+.banner-multifoto {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+.banner-multifoto img {
+  width: 25%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Efecto hover */
+.banner-multifoto img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para el Lightbox */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .banner-multifoto {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .banner-multifoto img {
+    width: 45%;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-multifoto img {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+
+
 /* SECCIÓN DE MODELOS */
 .modelos-section {
   padding: 60px 20px;
@@ -162,6 +228,23 @@
   background-color: var(--azul-marca);
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
+
+/* Breadcrumb o Migas de Pan */
+.breadcrumb {
+  font-size: 0.9em;
+  margin-bottom: 20px;
+  color: var(--gris-texto);
+}
+
+.breadcrumb a {
+  color: var(--azul-marca);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
 
 /* Estilos para el ícono PDF */
 .icono-pdf {
