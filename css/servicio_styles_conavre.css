@@ -429,6 +429,20 @@
   transition: all 0.3s ease;
 }
 
+@media (max-width: 768px) {
+  /* Ajustar tamaño del ícono de check en móviles */
+  .icono-check {
+    width: 18px;
+    height: 18px;
+  }
+
+  .ventajas-fibra li {
+    font-size: 1.1em;
+    gap: 8px;
+  }
+}
+
+
 /* Sección de confianza final */
 .confianza-conavre {
   background-color: var(--gris-fondo);
