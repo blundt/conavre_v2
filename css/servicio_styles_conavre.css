@@ -267,8 +267,8 @@
     display: block;
   }
 
-  /* OCULTAMOS th correctamente */
-  .tabla-modelos th {
+  /* Ocultamos los encabezados */
+  .tabla-modelos thead {
     display: none;
   }
 
@@ -277,21 +277,32 @@
     background: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     padding: 10px;
+    border-radius: 5px;
   }
 
   .tabla-modelos td {
     text-align: right;
     padding-left: 50%;
     position: relative;
+    border: none;
+    border-bottom: 1px solid #eee;
   }
 
   .tabla-modelos td::before {
     content: attr(data-label);
     position: absolute;
-    left: 15px;
-    width: calc(50% - 30px);
+    top: 0;
+    left: 0;
+    background-color: #f0f4f8; /* fondo suave */
+    padding: 10px;
+    width: 45%;
     text-align: left;
     font-weight: bold;
     color: var(--negro-texto);
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #eee;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    white-space: nowrap;
   }
 }
