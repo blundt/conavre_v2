@@ -1,4 +1,15 @@
 User-agent: *
-Allow: /
+Disallow: /css/
+Disallow: /js/
+Disallow: /img/
+Disallow: /pdf/
+Allow: /img/social/
+Allow: /img/favicon_32x32.png
+Allow: /img/favicon_96x96.png
+Allow: /img/favicon_192x192.png
+Allow: /img/favicon_512x512.png
+Allow: /favicon.ico
+Allow: /favicon.svg
+Allow: /manifest.json
 
 Sitemap: https://www.conavre.com/sitemap.xml

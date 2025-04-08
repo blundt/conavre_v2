@@ -107,6 +107,45 @@
     }
   }
 
+  /* CTA final para página de servicios */
+.cta-servicios {
+  margin-top: 60px;
+  padding: 40px 20px;
+  background-color: var(--azul-marca);
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.cta-servicios h3 {
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+.cta-servicios p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-servicios .btn {
+  display: inline-block;
+  background-color: white;
+  color: var(--azul-marca);
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.cta-servicios .btn:hover {
+  background-color: var(--azul-oscuro);
+  color: white;
+}
+
 /* Banner de múltiples imágenes */
 .banner-multifoto {
   display: flex;
@@ -170,6 +209,30 @@
   }
 }
 
+/* Estilos para la lista de tipos de embarcaciones */
+.tipos-embarcaciones {
+  margin-left: 20px;
+  margin-bottom: 30px;
+  list-style: disc inside;
+}
+
+.tipos-embarcaciones li {
+  margin-bottom: 12px;
+  font-size: 1.1em;
+  color: var(--gris-texto);
+}
+
+@media (max-width: 480px) {
+  .tipos-embarcaciones {
+    margin-left: 10px;
+    padding-left: 10px;
+  }
+
+  .tipos-embarcaciones li {
+    font-size: 1em;
+    margin-bottom: 10px;
+  }
+}
 
 /* SECCIÓN DE MODELOS */
 .modelos-section {
@@ -241,22 +304,6 @@
   filter: brightness(1.2);
 }
 
-/* Breadcrumb o Migas de Pan */
-.breadcrumb {
-  font-size: 0.9em;
-  margin-bottom: 20px;
-  color: var(--gris-texto);
-}
-
-.breadcrumb a {
-  color: var(--azul-marca);
-  text-decoration: none;
-}
-
-.breadcrumb a:hover {
-  text-decoration: underline;
-}
-
 @media (max-width: 768px) {
   .tabla-modelos table, 
   .tabla-modelos thead, 
@@ -306,3 +353,139 @@
     white-space: nowrap;
   }
 }
+
+/* CTA para modelos */
+.cta-modelos {
+  margin-top: 60px;
+  padding: 40px 20px;
+  background-color: var(--azul-marca);
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.cta-modelos h3 {
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+.cta-modelos p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.cta-modelos .btn {
+  display: inline-block;
+  background-color: white;
+  color: var(--azul-marca);
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.cta-modelos .btn:hover {
+  background-color: var(--azul-oscuro);
+  color: white;
+}
+
+/* Ventajas de la construcción en fibra de vidrio */
+.ventajas-fibra {
+  margin-top: 60px;
+}
+
+.ventajas-fibra h2 {
+  text-align: center;
+  font-size: 2.2em;
+  margin-bottom: 30px;
+}
+
+.ventajas-fibra ul {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 0;
+  list-style: none;
+}
+
+.ventajas-fibra li {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  color: var(--gris-texto);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icono-check {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.ventajas-fibra li:hover .icono-check {
+  filter: brightness(0) saturate(100%) invert(39%) sepia(71%) saturate(450%) hue-rotate(190deg) brightness(90%) contrast(90%);
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+/* Sección de confianza final */
+.confianza-conavre {
+  background-color: var(--gris-fondo);
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 60px;
+}
+
+.confianza-conavre p {
+  font-size: 1.2em;
+  color: var(--gris-texto);
+  margin-bottom: 30px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+.botones-servicio {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.botones-servicio a.btn,
+.botones-servicio a.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Ajuste de estilos para el botón principal */
+.btn {
+  background-color: var(--azul-marca);
+  color: white;
+}
+
+.btn:hover {
+  background-color: var(--azul-oscuro);
+}
+
+/* Ajuste para el botón secundario */
+.btn-secondary {
+  background-color: white;
+  color: var(--azul-marca);
+  border: 2px solid var(--azul-marca);
+}
+
+.btn-secondary:hover {
+  background-color: var(--azul-marca);
+  color: white;
+}
+
