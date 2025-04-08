@@ -257,7 +257,6 @@
   text-decoration: underline;
 }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
   .tabla-modelos table, 
   .tabla-modelos thead, 
@@ -268,8 +267,8 @@
     display: block;
   }
 
-  /* Ocultar encabezado azul en móvil */
-  .tabla-modelos thead {
+  /* OCULTAMOS th correctamente */
+  .tabla-modelos th {
     display: none;
   }
 
