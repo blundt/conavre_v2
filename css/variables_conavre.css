@@ -1,10 +1,11 @@
 /* VARIABLES DE CONAVRE */
 :root {
-    --azul-marca: #007bff;
-    --azul-oscuro: #0056b3;
-    --gris-fondo: #f9f9f9;
-    --gris-texto: #555;
-    --negro-texto: #333;
-    --fuente-base: 'Inter', sans-serif;
-  }
+  --azul-marca: #0056b3; /* Azul marino elegante (menos saturado, más sobrio) */
+  --azul-oscuro: #003d80; /* Azul aún más profundo para hover o fondos CTA */
+  --gris-fondo: #f5f7fa; /* Fondo más suave, casi blanco azulado */
+  --gris-texto: #555; /* Gris medio para texto general */
+  --negro-texto: #222; /* Gris-negro más suave que #000, para títulos */
+  --fuente-base: 'Inter', sans-serif;
+}
+
   

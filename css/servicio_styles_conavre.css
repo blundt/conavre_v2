@@ -370,9 +370,11 @@
 }
 
 .cta-modelos p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
+  font-size: 1.3em;
+  font-weight: 500;
+  color: #ffffff; /* Blanco puro */
 }
+
 
 .cta-modelos .btn {
   display: inline-block;
