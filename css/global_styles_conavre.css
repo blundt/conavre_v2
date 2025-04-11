@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 @import url("variables_conavre.css");
 
+
 /* RESET BÁSICO */
 * {
   margin: 0;
@@ -183,19 +184,24 @@ img {
   text-decoration: underline;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .breadcrumb {
     font-size: 0.85em;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 0 10px;
   }
 
   .breadcrumb ul {
-    gap: 3px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .breadcrumb li+li::before {
     margin: 0 5px;
   }
 }
+
 
 /* FOOTER */
 .footer-conavre {
@@ -309,4 +315,54 @@ img {
 .hero-content p {
   color: #ffffff;
 }
+
+/* Animaciones de aparición suaves en toda la web */
+/* Estado inicial */
+.animar-aparicion,
+.animar-cta {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Estado cuando es visible */
+.animar-aparicion.animar-activo {
+  animation: aparecerDeslizar 1s ease-out forwards;
+}
+
+.animar-cta.animar-activo {
+  animation: aparecerCTA 1s ease-out forwards;
+}
+
+/* Keyframes */
+@keyframes aparecerDeslizar {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aparecerCTA {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Animación para tarjetas */
+.animar-tarjeta {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Cuando la tarjeta entra en pantalla */
+.animar-tarjeta.animar-activo {
+  animation: aparecerTarjeta 0.8s ease-out forwards;
+}
+
+@keyframes aparecerTarjeta {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 

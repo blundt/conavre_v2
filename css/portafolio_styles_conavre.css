@@ -1,0 +1,119 @@
+/* Estilos específicos para la página de Portafolio */
+
+/* HERO de Portafolio */
+.hero-portafolio {
+    background-color: var(--gris-fondo);
+    padding: 80px 20px 60px;
+    text-align: center;
+  }
+  
+  .hero-portafolio h1 {
+    font-size: 3em;
+    color: var(--negro-texto);
+    margin-bottom: 20px;
+  }
+  
+  .subtitulo-hero {
+    font-size: 1.2em;
+    color: var(--gris-texto);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  
+  /* Ajuste para móviles */
+  @media (max-width: 768px) {
+    .hero-portafolio h1 {
+      font-size: 2.2em;
+    }
+  
+    .subtitulo-hero {
+      font-size: 1em;
+    }
+  }
+
+  
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .portfolio-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .portfolio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+  
+  .portfolio-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .portfolio-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .portfolio-info h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: var(--negro-texto);
+  }
+  
+  .portfolio-info p {
+    font-size: 1em;
+    color: var(--gris-texto);
+    margin-bottom: 15px;
+  }
+  
+  .portfolio-info .btn {
+    margin-top: auto;
+    align-self: flex-start;
+    padding: 10px 20px;
+    background-color: var(--azul-marca);
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .portfolio-info .btn:hover {
+    background-color: var(--azul-oscuro);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .portfolio-grid {
+      gap: 20px;
+    }
+  
+    .portfolio-card img {
+      height: 180px;
+    }
+  
+    .portfolio-info h3 {
+      font-size: 1.2em;
+    }
+  }
+
+  /* Separador visual entre secciones */
+.separador {
+    height: 60px;
+  }
+  

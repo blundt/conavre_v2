@@ -1,44 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Reparación completa de embarcación pesquera 'Tío Lalo' en fibra de vidrio. Incluye estructura, cabina, motores e instalación eléctrica. Proyecto realizado por CONAVRE en 16 semanas.">
-        <link rel="canonical" href="https://www.conavre.com/proyecto-tio-lalo.html">
-        <title>Proyecto Tío Lalo | Reparación de Embarcación Pesquera en Fibra de Vidrio - CONAVRE</title>
-        <!-- Favicon Clásico (ICO) -->
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-   
-        <!-- Favicon en formato SVG -->
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-   
-        <!-- Favicon PNG estándar -->
-        <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon_32x32.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon_96x96.png"> <!-- NUEVO -->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reparación integral de embarcación pesquera en fibra de vidrio. Restauración estructural, motorización y pintura marina. Proyecto CONAVRE en Chile.">
+  <link rel="canonical" href="https://www.conavre.com/proyecto-tio-lalo.html">
+  <title>Proyecto Tío Lalo | Reparación de Embarcación Pesquera - CONAVRE</title>
 
-        <!-- Icono para móviles -->
-        <link rel="apple-touch-icon" sizes="192x192" href="/img/favicon_192x192.png">
-        <link rel="apple-touch-icon" sizes="512x512" href="/img/favicon_512x512.png">
+  <!-- Favicon Clásico (ICO) -->
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon_32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon_96x96.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="/img/favicon_192x192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="/img/favicon_512x512.png">
+  <link rel="manifest" href="/manifest.json">
 
-        <!-- Web App Manifest -->
-        <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="css/variables_conavre.css">
+  <link rel="stylesheet" href="css/global_styles_conavre.css">
+  <link rel="stylesheet" href="css/proyecto_styles_conavre.css">
+  <script src="js/main.js" defer></script>
 
-        <link rel="stylesheet" href="css/variables_conavre.css">
-        <link rel="stylesheet" href="css/global_styles_conavre.css">
-        <link rel="stylesheet" href="css/proyecto_styles_conavre.css">
-        <script src="js/main.js" defer></script>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SLX90JRP7G"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'G-SLX90JRP7G');
-        </script>
-      </head>      
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SLX90JRP7G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SLX90JRP7G');
+  </script>
+
+  <!-- Breadcrumb JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://www.conavre.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Portafolio",
+        "item": "https://www.conavre.com/portafolio.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Reparación de Embarcación - Tío Lalo"
+      }
+    ]
+  }
+  </script>
+</head>
+
 <body>
-      <!-- HEADER CONAVRE -->
+
 <header class="header-conavre">
   <div class="container header-flex">
     <a href="index.html" class="logo-link">
@@ -50,7 +71,7 @@
         <li><a href="blog.html">Blog</a></li>
         <li><a href="servicios-conavre.html">Servicios</a></li>
         <li><a href="construccion-embarcaciones.html">Construcción de Embarcaciones</a></li>
-        <li><a href="index.html#portafolio">Portafolio</a></li>
+        <li><a href="portafolio.html">Portafolio</a></li>
         <li><a href="index.html#cotiza">Cotiza</a></li>
         <li><a href="index.html#contacto">Contacto</a></li>
       </ul>
@@ -58,81 +79,90 @@
     <button class="menu-toggle" id="menu-toggle">☰</button>
   </div>
 </header>
-    <!-- PLANTILLA DE PROYECTO INDIVIDUAL -->
+
+<!-- Breadcrumb Visual -->
+<nav class="breadcrumb">
+  <ul>
+    <li><a href="../index.html">Inicio</a></li>
+    <li><a href="../portafolio.html">Portafolio</a></li>
+    <li>Reparación de Embarcación - Tío Lalo</li>
+  </ul>
+</nav>
+
 <section class="proyecto-header">
-    <div class="container">
-      <h1>Reparacion Pesquero - "Tio Lalo"</h1>
-      <p class="subtitulo">Reparación y reconstrucción</p>
+  <div class="container">
+    <h1>Reparación de Embarcación Pesquera - "Tío Lalo"</h1>
+    <p class="subtitulo">Reestructuración, motorización y pintura</p>
+  </div>
+</section>
+
+<section class="proyecto-detalle">
+  <div class="container">
+    <div class="proyecto-descripcion">
+      <h2>Descripción del Proyecto</h2>
+      <p>Proyecto de reparación integral de embarcación pesquera en fibra de vidrio. Se realizaron trabajos estructurales de refuerzo, reparación de cascos, reinstalación de motores nuevos, modificaciones de cabina y aplicación de esquema de pintura marina. La embarcación fue entregada en óptimas condiciones para retomar su operación comercial en el rubro de la pesca artesanal.</p>
+      <ul>
+        <li><strong>Cliente:</strong> Particular</li>
+        <li><strong>Duración:</strong> 16 semanas</li>
+        <li><strong>Servicios aplicados:</strong> Ingeniería, reparación en fibra de vidrio, pintura, instalación eléctrica y motorización</li>
+        <li><strong>Materiales:</strong> Fibra de vidrio, resinas, pintura marina, madera</li>
+      </ul>
     </div>
-  </section>
-  
-  <section class="proyecto-detalle">
-    <div class="container">
-      <div class="proyecto-descripcion">
-        <h2>Descripción del Proyecto</h2>
-        <p>Este proyecto consistió en la reparación integral de la embarcación pesquera denominada "Tío Lalo", construida en fibra de vidrio reforzada. Los trabajos incluyeron la reparación completa de su estructura, la reconstrucción de la cabina y diversos compartimientos, la instalación de nuevos motores y la aplicación de un esquema de pintura renovado. Todas las labores se realizaron cumpliendo con los estándares solicitados por el cliente, dejando la embarcación en óptimas condiciones para retomar sus operaciones de servicio.</p>
-        <ul>
-          <li><strong>Cliente:</strong> Particular </li>
-          <li><strong>Duración:</strong> 16 semanas</li>
-          <li><strong>Servicios aplicados:</strong> Ingenieria, Reparacion y construccion en fibra de vidrio, pintura, instalación eléctrica, instalacion motores y componentes</li>
-          <li><strong>Materiales:</strong> Fibra de vidrio, resinas, pintura marina, madera</li>
-        </ul>
-      </div>
-  
-      <div class="proyecto-galeria">
-        <h2>Galería del Proyecto</h2>
-        <div class="galeria-grid">
-          <img src="img/proyecto2/1.webp" alt="Imagen 1" loading="lazy">
-          <img src="img/proyecto2/2.webp" alt="Imagen 2" loading="lazy">
-          <img src="img/proyecto2/3.webp" alt="Imagen 3" loading="lazy">
-          <img src="img/proyecto2/4.webp" alt="Imagen 4" loading="lazy">
-        </div>
-      </div>
-  
-      <div class="proyecto-cta">
-        <p>¿Tienes un proyecto similar? <a href="../index.html#cotiza" class="btn-volver">Solicita tu cotización</a></p>
-        <p><a href="../index.html#portafolio" class="btn-volver">Volver al Portafolio</a></p>
+
+    <div class="proyecto-galeria">
+      <h2>Galería del Proyecto</h2>
+      <div class="galeria-grid">
+        <img src="img/proyecto2/1.webp" alt="Reparación casco embarcación" loading="lazy">
+        <img src="img/proyecto2/2.webp" alt="Pintura y motorización de embarcación pesquera" loading="lazy">
+        <img src="img/proyecto2/3.webp" alt="Instalación motor nuevo" loading="lazy">
+        <img src="img/proyecto2/4.webp" alt="Resultado final reparación" loading="lazy">
       </div>
     </div>
-  </section>
-  <!-- FOOTER PROFESIONAL -->
-  <footer class="footer-conavre">
-    <div class="footer-container">
-      <div class="footer-logo">
-        <img src="img/logo.webp" alt="Logo oficial de CONAVRE, astillero chileno">
-        <p>Especialistas en construcción, reparación y diseño de embarcaciones en fibra de vidrio.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Enlaces Rápidos</h4>
-        <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="construccion-embarcaciones.html#modelos">Modelos de Embarcaciones</a></li>
-          <li><a href="servicios-conavre.html">Servicios</a></li>
-          <li><a href="index.html#portafolio">Portafolio</a></li>
-          <li><a href="index.html#cotiza">Cotización</a></li>
-          <li><a href="index.html#contacto">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="footer-contacto">
-        <h4>Contacto</h4>
-        <p>Av. Concon-Quintero Km2 - Parque Industrial Aconcagua, Lote #4<br>Quintero, Valparaíso</p>
-        <p>+56 9 9821 9394</p>
-        <p><a href="mailto:contacto@conavre.com">contacto@conavre.com</a></p>
-        <div class="footer-social">
-          <a href="https://www.instagram.com/astilleroconavre" target="_blank">
-            <img src="img/social/instagram.png" alt="Instagram">
-          </a>
-          <a href="https://www.facebook.com/share/rHzJa6TBPyL7xrec" target="_blank">
-            <img src="img/social/facebook.png" alt="Facebook">
-          </a>
-        </div>
+
+    <div class="proyecto-cta">
+      <p>¿Tienes un proyecto similar? <a href="../index.html#cotiza" class="btn-volver">Solicita tu cotización</a></p>
+      <p><a href="../portafolio.html" class="btn-volver">Volver al Portafolio</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-conavre">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <img src="img/logo.webp" alt="Logo oficial de CONAVRE, astillero chileno">
+      <p>Especialistas en construcción, reparación y diseño de embarcaciones en fibra de vidrio.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Enlaces Rápidos</h4>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../construccion-embarcaciones.html#modelos">Modelos de Embarcaciones</a></li>
+        <li><a href="../servicios-conavre.html">Servicios</a></li>
+        <li><a href="../portafolio.html">Portafolio</a></li>
+        <li><a href="../index.html#cotiza">Cotización</a></li>
+        <li><a href="../index.html#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-contacto">
+      <h4>Contacto</h4>
+      <p>Av. Concon-Quintero Km2 - Parque Industrial Aconcagua, Lote #4<br>Quintero, Valparaíso</p>
+      <p>+56 9 9821 9394</p>
+      <p><a href="mailto:contacto@conavre.com">contacto@conavre.com</a></p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/astilleroconavre" target="_blank">
+          <img src="img/social/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/share/rHzJa6TBPyL7xrec" target="_blank">
+          <img src="img/social/facebook.png" alt="Facebook">
+        </a>
       </div>
     </div>
-    <div class="footer-copy">
-      <p>&copy; 2025 Conavre. Todos los derechos reservados.</p>
-    </div>
-  </footer>
-    
+  </div>
+  <div class="footer-copy">
+    <p>&copy; 2025 Conavre. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
 </body>
 </html>
