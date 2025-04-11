@@ -1,500 +1,111 @@
-/* ESTILOS PARA PÁGINAS DE SERVICIOS DE CONAVRE */
+/* --- SERVICIOS CONAVRE --- */
 
-/* SECCIÓN PRINCIPAL */
+/* Sección principal */
 .servicio-section {
-    padding: 60px 20px;
-    background-color: #fff;
-  }
-  
-  .servicio-section .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* TÍTULOS Y SUBTÍTULOS */
-  .servicio-section h1 {
-    font-size: 2.5em;
-    color: var(--negro-texto);
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .subtitulo-servicio {
-    font-size: 1.2em;
-    color: var(--gris-texto);
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  /* IMAGEN PRINCIPAL */
-  .img-principal-servicio {
-    width: 100%;
-    max-height: 450px;
-    object-fit: cover;
-    margin-bottom: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
-  
-  /* DESCRIPCIÓN DEL SERVICIO */
-  .servicio-descripcion {
-    font-size: 1em;
-    color: var(--gris-texto);
-    line-height: 1.7;
-  }
-  
-  .servicio-descripcion h2 {
-    font-size: 1.8em;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    color: var(--negro-texto);
-  }
-  
-  .servicio-descripcion p {
-    margin-bottom: 20px;
-  }
-  
-  .servicio-descripcion ul {
-    margin-left: 20px;
-    margin-bottom: 30px;
-  }
-  
-  .servicio-descripcion ul li {
-    margin-bottom: 10px;
-    list-style: disc;
-  }
-  
-  /* BOTONES DE ACCIÓN */
-  .botones-servicio {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 40px;
-    justify-content: center;
-  }
-  
-  .botones-servicio .btn,
-  .botones-servicio .btn-secondary {
-    padding: 12px 24px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    .servicio-section {
-      padding: 40px 15px;
-    }
-  
-    .servicio-section h1 {
-      font-size: 2em;
-    }
-  
-    .subtitulo-servicio {
-      font-size: 1em;
-    }
-  
-    .img-principal-servicio {
-      max-height: 300px;
-    }
-  
-    .botones-servicio {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
+  padding: 60px 20px;
+  background-color: #fff;
+}
+
+.servicio-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.servicio-section h1 {
+  font-size: 2.5em;
+  color: var(--negro-texto);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.subtitulo-servicio {
+  font-size: 1.2em;
+  color: var(--gris-texto);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Grilla de servicios */
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
 
 
-/* CTA final exclusivo para Servicios */
+.servicio-card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 30px 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.servicio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.servicio-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.servicio-card h3 {
+  font-size: 1.4em;
+  color: var(--negro-texto);
+  margin-bottom: 10px;
+}
+
+.servicio-card p {
+  font-size: 1em;
+  color: var(--gris-texto);
+  line-height: 1.5;
+}
+
+/* CTA final de servicios */
 .cta-servicios {
   margin-top: 60px;
   padding: 40px 20px;
-  background-color: var(--azul-marca);
+  background-color: var(--gris-fondo);
   text-align: center;
   border-radius: 10px;
-  color: white;
 }
 
 .cta-servicios h3 {
-  color: var(--negro-texto); /* Título negro */
   font-size: 2em;
+  color: var(--negro-texto);
   margin-bottom: 15px;
 }
 
 .cta-servicios p {
-  color: white; /* Texto blanco */
   font-size: 1.2em;
+  color: var(--gris-texto);
   margin-bottom: 20px;
 }
 
-.cta-servicios .btn {
-  display: inline-block;
-  background-color: white;
-  color: var(--azul-marca);
-  padding: 12px 24px;
-  border-radius: 5px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.cta-servicios .btn:hover {
-  background-color: var(--azul-oscuro);
-  color: white;
-}
-
-
-/* Banner de múltiples imágenes */
-.banner-multifoto {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 40px;
-  overflow: hidden;
-}
-
-.banner-multifoto img {
-  width: 25%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-/* Efecto hover */
-.banner-multifoto img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Estilos para el Lightbox */
-.lightbox-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.lightbox-overlay img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 10px;
-}
-
-
-/* Responsive para móviles */
-@media (max-width: 768px) {
-  .banner-multifoto {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .banner-multifoto img {
-    width: 45%;
-    height: 200px;
-  }
-}
-
-@media (max-width: 480px) {
-  .banner-multifoto img {
-    width: 100%;
-    height: 200px;
-  }
-}
-
-/* Estilos para la lista de tipos de embarcaciones */
-.tipos-embarcaciones {
-  margin-left: 20px;
-  margin-bottom: 30px;
-  list-style: disc inside;
-}
-
-.tipos-embarcaciones li {
-  margin-bottom: 12px;
-  font-size: 1.1em;
-  color: var(--gris-texto);
-}
-
-@media (max-width: 480px) {
-  .tipos-embarcaciones {
-    margin-left: 10px;
-    padding-left: 10px;
-  }
-
-  .tipos-embarcaciones li {
-    font-size: 1em;
-    margin-bottom: 10px;
-  }
-}
-
-/* SECCIÓN DE MODELOS */
-.modelos-section {
-  padding: 60px 20px;
-  background-color: var(--gris-fondo);
-}
-
-.modelos-section h2 {
-  text-align: center;
-  font-size: 2.2em;
-  margin-bottom: 20px;
-}
-
-.modelos-section p {
-  text-align: center;
-  margin-bottom: 40px;
-  color: var(--gris-texto);
-}
-
-/* TABLA DE MODELOS */
-.tabla-modelos table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.tabla-modelos th,
-.tabla-modelos td {
-  padding: 15px;
-  text-align: center;
-  border: 1px solid #ddd;
-}
-
-.tabla-modelos th {
-  background-color: var(--azul-marca);
-  color: #fff;
-  font-weight: 600;
-}
-
-/* BOTÓN PARA FICHA PDF */
-.btn-ficha {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: var(--azul-oscuro);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 5px;
-  font-size: 0.9em;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
-
-.btn-ficha:hover {
-  background-color: var(--azul-marca);
-}
-
-/* ÍCONO PDF */
-.icono-pdf {
-  width: 20px;
-  height: 20px;
-  vertical-align: middle;
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.btn-ficha:hover .icono-pdf {
-  transform: scale(1.1);
-  filter: brightness(1.2);
-}
-
-@media (max-width: 768px) {
-  .tabla-modelos table, 
-  .tabla-modelos thead, 
-  .tabla-modelos tbody, 
-  .tabla-modelos th, 
-  .tabla-modelos td, 
-  .tabla-modelos tr {
-    display: block;
-  }
-
-  /* Ocultamos los encabezados */
-  .tabla-modelos thead {
-    display: none;
-  }
-
-  .tabla-modelos tr {
-    margin-bottom: 15px;
-    background: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    padding: 10px;
-    border-radius: 5px;
-  }
-
-  .tabla-modelos td {
-    text-align: right;
-    padding-left: 50%;
-    position: relative;
-    border: none;
-    border-bottom: 1px solid #eee;
-  }
-
-  .tabla-modelos td::before {
-    content: attr(data-label);
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #f0f4f8; /* fondo suave */
-    padding: 10px;
-    width: 45%;
-    text-align: left;
-    font-weight: bold;
-    color: var(--negro-texto);
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #eee;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    white-space: nowrap;
-  }
-}
-
-/* CTA para modelos */
-.cta-modelos {
-  margin-top: 60px;
-  padding: 40px 20px;
-  background-color: var(--azul-marca);
-  color: white;
-  text-align: center;
-  border-radius: 10px;
-}
-
-.cta-modelos h3 {
-  font-size: 2em;
-  margin-bottom: 15px;
-}
-
-.cta-modelos p {
-  font-size: 1.3em;
-  font-weight: 500;
-  color: #ffffff; /* Blanco puro */
-}
-
-
-.cta-modelos .btn {
-  display: inline-block;
-  background-color: white;
-  color: var(--azul-marca);
-  padding: 12px 24px;
-  border-radius: 5px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.cta-modelos .btn:hover {
-  background-color: var(--azul-oscuro);
-  color: white;
-}
-
-/* Ventajas de la construcción en fibra de vidrio */
-.ventajas-fibra {
-  margin-top: 60px;
-}
-
-.ventajas-fibra h2 {
-  text-align: center;
-  font-size: 2.2em;
-  margin-bottom: 30px;
-}
-
-.ventajas-fibra ul {
-  max-width: 800px;
-  margin: 0 auto;
-  padding-left: 0;
-  list-style: none;
-}
-
-.ventajas-fibra li {
-  font-size: 1.2em;
-  margin-bottom: 15px;
-  color: var(--gris-texto);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.icono-check {
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-}
-
-.ventajas-fibra li:hover .icono-check {
-  filter: brightness(0) saturate(100%) invert(39%) sepia(71%) saturate(450%) hue-rotate(190deg) brightness(90%) contrast(90%);
-  transform: scale(1.1);
-  transition: all 0.3s ease;
-}
-
-@media (max-width: 768px) {
-  /* Ajustar tamaño del ícono de check en móviles */
-  .icono-check {
-    width: 18px;
-    height: 18px;
-  }
-
-  .ventajas-fibra li {
-    font-size: 1.1em;
-    gap: 8px;
-  }
-}
-
-
-/* Sección de confianza final */
-.confianza-conavre {
-  background-color: var(--gris-fondo);
-  padding: 60px 20px;
-  text-align: center;
-  border-radius: 10px;
-  margin-top: 60px;
-}
-
-.confianza-conavre p {
-  font-size: 1.2em;
-  color: var(--gris-texto);
-  margin-bottom: 30px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.8;
-}
-
-.botones-servicio {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.botones-servicio a.btn,
-.botones-servicio a.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  border-radius: 5px;
-  font-weight: bold;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* Ajuste de estilos para el botón principal */
+/* Botón */
 .btn {
   background-color: var(--azul-marca);
   color: white;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s;
 }
 
 .btn:hover {
   background-color: var(--azul-oscuro);
 }
 
-/* Ajuste para el botón secundario */
 .btn-secondary {
   background-color: white;
   color: var(--azul-marca);
@@ -506,3 +117,86 @@
   color: white;
 }
 
+/* Responsivo */
+@media (max-width: 768px) {
+  .servicios-grid {
+    gap: 20px;
+  }
+
+  .servicio-card {
+    padding: 20px 15px;
+  }
+
+  .servicio-card img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .servicio-card h3 {
+    font-size: 1.2em;
+  }
+}
+/* Sección ¿Por qué elegirnos? */
+.porque-elegirnos {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.porque-elegirnos h2 {
+  font-size: 2.2em;
+  margin-bottom: 30px;
+  color: var(--negro-texto);
+}
+
+.elegirnos-lista {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+}
+
+.elegirnos-lista li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  color: var(--gris-texto);
+}
+
+.icono-elegirnos {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+/* Párrafo de cierre */
+.texto-cierre {
+  font-size: 1.1em;
+  color: var(--gris-texto);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+/* CTA secundaria */
+.cta-secundaria {
+  margin-top: 60px;
+  padding: 30px 20px;
+  background-color: var(--gris-fondo);
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.cta-secundaria h3 {
+  font-size: 1.8em;
+  color: var(--negro-texto);
+  margin-bottom: 10px;
+}
+
+.cta-secundaria p {
+  font-size: 1.1em;
+  color: var(--gris-texto);
+  margin-bottom: 20px;
+}

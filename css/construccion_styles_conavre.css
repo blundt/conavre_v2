@@ -1,0 +1,255 @@
+/* --- CONSTRUCCIÓN DE EMBARCACIONES CONAVRE --- */
+
+/* Banner de múltiples imágenes */
+.banner-multifoto {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+  
+  .banner-multifoto img {
+    width: 25%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  
+  .banner-multifoto img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Responsive Banner */
+  @media (max-width: 768px) {
+    .banner-multifoto {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .banner-multifoto img {
+      width: 45%;
+      height: 200px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .banner-multifoto img {
+      width: 100%;
+      height: 200px;
+    }
+  }
+  
+  /* Sección Modelos */
+  .modelos-section {
+    padding: 60px 20px;
+    background-color: var(--gris-fondo);
+  }
+  
+  .modelos-section h2 {
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 20px;
+  }
+  
+  .modelos-section p {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--gris-texto);
+  }
+  
+  /* Tabla de modelos */
+  .tabla-modelos table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  .tabla-modelos th,
+  .tabla-modelos td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  
+  .tabla-modelos th {
+    background-color: var(--azul-marca);
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  /* Botón ficha PDF */
+  .btn-ficha {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--azul-oscuro);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-ficha:hover {
+    background-color: var(--azul-marca);
+  }
+  
+  .icono-pdf {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+  }
+  
+  /* Responsivo tabla */
+  @media (max-width: 768px) {
+    .tabla-modelos table,
+    .tabla-modelos thead,
+    .tabla-modelos tbody,
+    .tabla-modelos th,
+    .tabla-modelos td,
+    .tabla-modelos tr {
+      display: block;
+    }
+  
+    .tabla-modelos thead {
+      display: none;
+    }
+  
+    .tabla-modelos tr {
+      margin-bottom: 15px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  
+    .tabla-modelos td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+      border: none;
+    }
+  
+    .tabla-modelos td::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #f0f4f8;
+      padding: 10px;
+      width: 45%;
+      text-align: left;
+      font-weight: bold;
+      color: var(--negro-texto);
+    }
+  }
+  
+  /* CTA Modelos */
+  .cta-modelos {
+    margin-top: 60px;
+    padding: 40px 20px;
+    background-color: var(--azul-marca);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  .cta-modelos h3 {
+    font-size: 2em;
+    margin-bottom: 15px;
+  }
+  
+  .cta-modelos p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: white; /* <<< agregamos esto */
+  }
+  
+  .cta-modelos .btn {
+    display: inline-block;
+    background-color: white;
+    color: var(--azul-marca);
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .cta-modelos .btn:hover {
+    background-color: var(--azul-oscuro);
+    color: white;
+  }
+  
+  /* Ventajas Fibra */
+  .ventajas-fibra {
+    margin-top: 60px;
+  }
+  
+  .ventajas-fibra h2 {
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 30px;
+  }
+  
+  .ventajas-fibra ul {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  .ventajas-fibra li {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: var(--gris-texto);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Confianza Conavre */
+  .confianza-conavre {
+    background-color: var(--gris-fondo);
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 60px;
+  }
+  
+  .confianza-conavre p {
+    font-size: 1.2em;
+    color: var(--gris-texto);
+    margin-bottom: 30px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+  }
+/* Íconos de Check en Ventajas */
+.icono-check {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    vertical-align: middle;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  
+  /* Efecto hover para los íconos */
+  .ventajas-fibra li:hover .icono-check {
+    filter: brightness(0) saturate(100%) invert(39%) sepia(71%) saturate(450%) hue-rotate(190deg) brightness(90%) contrast(90%);
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+  }
+  
+  /* Ajuste Responsivo para los íconos en móviles */
+  @media (max-width: 768px) {
+    .icono-check {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
