@@ -1,6 +1,5 @@
 /* --- SERVICIOS CONAVRE --- */
 
-/* Sección principal */
 .servicio-section {
   padding: 60px 20px;
   background-color: #fff;
@@ -120,6 +119,7 @@
 /* Responsivo */
 @media (max-width: 768px) {
   .servicios-grid {
+    grid-template-columns: 2fr;
     gap: 20px;
   }
 
