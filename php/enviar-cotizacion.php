@@ -1,5 +1,25 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // --- 1. Honeypot anti-bot ---
+    if (!empty($_POST['honeypot'])) {
+        echo "<script>alert('Error: Actividad sospechosa detectada.'); history.back();</script>";
+        exit;
+    }
+
+    // --- 2. Verificación reCAPTCHA ---
+    $recaptcha_secret = '6LcuQxcrAAAAAFhF3hKt7frLi7BTgzpX98sLXBFR';
+    $recaptcha_response = $_POST['recaptcha_response'];
+
+    $verify_response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$recaptcha_secret.'&response='.$recaptcha_response);
+    $response_data = json_decode($verify_response);
+
+    if (!$response_data->success || $response_data->score < 0.5) {
+        echo "<script>alert('Error: Verificación de seguridad fallida. Intenta nuevamente.'); history.back();</script>";
+        exit;
+    }
+
+    // --- 3. Procesar el formulario ---
     $nombre = htmlspecialchars($_POST['nombre']);
     $correo = htmlspecialchars($_POST['email']);
     $telefono = htmlspecialchars($_POST['telefono']);
@@ -8,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $to = "contacto@conavre.com";
     $subject = "Nueva solicitud de cotización desde el sitio web";
-    
+
     $message = "Has recibido una nueva solicitud de cotización:\n\n";
     $message .= "Nombre: $nombre\n";
     $message .= "Correo: $correo\n";
@@ -18,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $headers = "From: $correo";
 
-    // Manejo de archivo adjunto
     if (isset($_FILES['archivo']) && $_FILES['archivo']['error'] == UPLOAD_ERR_OK) {
         $fileTmpPath = $_FILES['archivo']['tmp_name'];
         $fileName = $_FILES['archivo']['name'];
@@ -51,7 +70,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "<script>alert('Hubo un error al enviar tu solicitud. Intenta nuevamente.'); history.back();</script>";
     }
-} else {
-    echo "<script>window.location.href = '../index.html';</script>";
 }
 ?>
