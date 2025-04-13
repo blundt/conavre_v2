@@ -82,8 +82,10 @@
     
       gtag('config', 'G-SLX90JRP7G');
     </script>
-    <!-- Google reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js?render=TU_SITE_KEY_AQUI"></script>
+    <!-- reCAPTCHA API cargada primero -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcuQxcrAAAAALFC3I5dGCo16XAcjz2b58b836TN"></script>
+
+    <!-- Tu script personalizado que usa grecaptcha -->
     <script>
       grecaptcha.ready(function() {
         grecaptcha.execute('6LcuQxcrAAAAALFC3I5dGCo16XAcjz2b58b836TN', {action: 'submit'}).then(function(token) {
@@ -92,6 +94,7 @@
         });
       });
     </script>
+
 
 </head>
 <body>
