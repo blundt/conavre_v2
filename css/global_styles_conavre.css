@@ -365,4 +365,17 @@ img {
   }
 }
 
+.seo-refuerzo {
+  margin-top: 60px;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
 
+.seo-refuerzo p {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 1.1em;
+  color: var(--gris-texto);
+  text-align: justify;
+  line-height: 1.8;
+}
