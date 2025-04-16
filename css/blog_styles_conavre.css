@@ -76,13 +76,15 @@
   width: 100%;
   max-width: 800px;
   height: auto;
-  max-height: 450px; /* Límite razonable para escritorio */
-  object-fit: cover;
+  max-height: 450px; 
+  object-fit: scale-down; /* ajusta para mostrar toda la imagen */
   margin: 20px auto;
   display: block;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+
 
 /* Estilos para artículos individuales del Blog */
 .blog-post {
