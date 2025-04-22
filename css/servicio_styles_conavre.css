@@ -201,4 +201,105 @@
   margin-bottom: 20px;
 }
 
+/* NUEVOS ESTILOS PARA LA SECCIÓN DE SERVICIOS EXTENDIDA */
+
+/* HERO INFORMATIVO PARA SERVICIOS */
+.hero-servicios {
+  background-color: var(--gris-fondo);
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hero-servicios h1 {
+  font-size: 2.5em;
+  color: var(--negro-texto);
+  margin-bottom: 20px;
+}
+
+.hero-servicios p {
+  font-size: 1.2em;
+  color: var(--gris-texto);
+  margin-bottom: 30px;
+}
+
+/* MINI PORTAFOLIO */
+.mini-portafolio {
+  padding: 60px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.mini-portafolio h2 {
+  font-size: 2.2em;
+  margin-bottom: 40px;
+  color: var(--negro-texto);
+}
+
+.mini-portafolio .services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.mini-portafolio .service-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  width: 300px;
+  transition: transform 0.3s ease;
+  text-align: left;
+}
+
+.mini-portafolio .service-card:hover {
+  transform: translateY(-5px);
+}
+
+.mini-portafolio .service-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.mini-portafolio .service-card h3 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  color: var(--azul-marca);
+}
+
+.mini-portafolio .service-card p {
+  font-size: 1em;
+  color: var(--gris-texto);
+  margin-bottom: 15px;
+}
+
+/* BADGES DESTACADOS */
+.badge {
+  display: inline-block;
+  background-color: var(--azul-oscuro);
+  color: white;
+  font-size: 0.75em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-servicios h1 {
+    font-size: 2em;
+  }
+
+  .hero-servicios p {
+    font-size: 1em;
+  }
+
+  .mini-portafolio .service-card {
+    width: 90%;
+  }
+}
 

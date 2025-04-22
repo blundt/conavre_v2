@@ -96,6 +96,81 @@
   }
   
 }
+.fondo-blur {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 30px 20px;
+  backdrop-filter: blur(4px);
+}
+
+.fondo-blur h1,
+.fondo-blur h2,
+.fondo-blur p,
+.fondo-blur a {
+  color: #ffffff;
+}
+
+.fondo-blur p {
+  color: #e0e0e0;
+}
+
+.fondo-blur a.btn-secondary {
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.fondo-blur a.btn-secondary:hover {
+  background-color: #ffffff;
+  color: #000000; /* Texto negro al pasar el mouse */
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 60px; /* antes estaba en 20px */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  animation: bounce 2s infinite;
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+
+.scroll-indicator img {
+  width: 32px;
+  height: auto;
+  display: block;
+  filter: brightness(100%);
+}
+
+/* Animación suave hacia abajo */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(8px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(5px);
+  }
+}
+
+/* Ocultar cuando se hace scroll */
+body.scrolled .scroll-indicator {
+  display: none;
+}
+
+/* Responsive ajuste */
+@media (max-width: 768px) {
+  .scroll-indicator img {
+    width: 24px;
+  }
+}
+
+
 
 /* SECCIÓN DE SERVICIOS */
 .services-section {

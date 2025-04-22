@@ -59,6 +59,16 @@ document.addEventListener('DOMContentLoaded', function () {
   tarjetas.forEach(el => observerTarjetas.observe(el));
 });
 
+window.addEventListener('scroll', function () {
+  if (window.scrollY > 400) { // antes era 50
+    document.body.classList.add('scrolled');
+  } else {
+    document.body.classList.remove('scrolled');
+  }
+});
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const formulario = document.getElementById("form-cotiza");
   const respuesta = document.getElementById("respuesta-formulario");

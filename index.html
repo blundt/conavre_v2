@@ -61,7 +61,20 @@
         }
       }
     </script>
-      
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://www.conavre.com/"
+          }
+        ]
+      }
+      </script>  
       
     <!-- Favicon Clásico (ICO) -->
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -130,27 +143,37 @@
           <li><a href="index.html#contacto">Contacto</a></li>
         </ul>
       </nav>
-      <button class="menu-toggle" id="menu-toggle">☰</button>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Menú principal de navegación">☰</button>
+
     </div>
   </header>
 <main>
     <!-- HERO PRINCIPAL CON VIDEO DE FONDO -->
-<section id="hero" class="hero-section">
-    <div class="hero-overlay"></div>
-    <video autoplay muted loop playsinline class="hero-video">
-      <source src="videos/C_VII_DONA_HELENA.mp4" type="video/mp4">
-      Tu navegador no soporta videos HTML5.
-    </video>
-  
-    <div class="hero-content">
-      <h1>Construcción y Reparación de Embarcaciones en Fibra de Vidrio</h1>
-      <p>Especialistas en fibra de vidrio, soluciones navales y estructuras personalizadas</p>
-      <div class="hero-buttons">
-        <a href="portafolio.html" class="btn-primary">Ver Proyectos</a>
-        <a href="#cotiza" class="btn-secondary">Cotiza tu Proyecto</a>
+    <section id="hero" class="hero-section">
+      <div class="hero-overlay"></div>
+      <video autoplay muted loop playsinline class="hero-video">
+        <source src="videos/C_VII_DONA_HELENA.mp4" type="video/mp4">
+        Tu navegador no soporta videos HTML5.
+      </video>
+    
+      <div class="hero-content fondo-blur">
+        <h1>Construcción y Reparación de Embarcaciones en Fibra de Vidrio</h1>
+        <h2 style="font-size:1.2em; font-weight:400; margin-bottom:15px;">
+          Astillero en fibra de vidrio en Chile especializado en soluciones para turismo, pesca y estructuras navales
+        </h2>
+        <p>Especialistas en fibra de vidrio, soluciones navales y estructuras personalizadas desde la Quinta Región de Chile</p>
+        <div class="hero-buttons">
+          <a href="portafolio.html" class="btn-primary">Ver Proyectos</a>
+          <a href="#cotiza" class="btn-secondary">Cotiza tu Proyecto</a>
+        </div>
       </div>
-    </div>
-  </section>
+      <div class="scroll-indicator" onclick="document.getElementById('servicios').scrollIntoView({ behavior: 'smooth' });">
+        <img src="img/icons/arrow.svg" alt="Desplázate hacia abajo" loading="lazy">
+      </div>
+      
+    </section>
+    
+    
 <!-- SECCIÓN DE SERVICIOS DESTACADOS -->
 <section id="servicios" class="services-section">
   <h2>Servicios en construcción naval, fibra de vidrio y soluciones personalizadas</h2>
