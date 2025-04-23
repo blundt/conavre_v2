@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Proyecto | Doña Helena</title>
+        <title>Proyecto | Nombre proyecto</title>
         <!-- Favicon Clásico (ICO) -->
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <!-- Favicon en formato SVG -->
@@ -22,9 +22,59 @@
         <link rel="stylesheet" href="css/variables_conavre.css">
         <link rel="stylesheet" href="css/global_styles_conavre.css">
         <link rel="stylesheet" href="css/proyecto_styles_conavre.css">
+        <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            "name": "Nombre del Proyecto",
+            "description": "Breve descripción con palabras clave del proyecto.",
+            "url": "https://www.conavre.com/proyecto-nombre.html",
+            "image": [
+              "https://www.conavre.com/img/proyecto1/1.webp",
+              "https://www.conavre.com/img/proyecto1/2.webp"
+            ],
+            "dateCreated": "2024-01-10",
+            "datePublished": "2025-04-03T00:00:00-04:00",
+            "material": ["Fibra de vidrio", "Madera", "Resinas"],
+            "provider": {
+              "@type": "Organization",
+              "name": "CONAVRE",
+              "url": "https://www.conavre.com"
+            }
+          }
+          </script>
+          
+        <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Inicio",
+                "item": "https://www.conavre.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Portafolio",
+                "item": "https://www.conavre.com/portafolio.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Nombre del Proyecto",
+                "item": "https://www.conavre.com/proyecto-nombre.html"
+              }
+            ]
+          }
+          </script>
+          
         <script src="js/main.js" defer></script>
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-SLX90JRP7G"></script>
+        
         <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -54,6 +104,13 @@
     <button class="menu-toggle" id="menu-toggle">☰</button>
   </div>
 </header>
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="portafolio.html">Portafolio</a></li>
+    <li>Nombre del Proyecto</li>
+  </ul>
+</nav>
     <!-- PLANTILLA DE PROYECTO INDIVIDUAL -->
 <section class="proyecto-header">
     <div class="container">
@@ -66,28 +123,32 @@
     <div class="container">
       <div class="proyecto-descripcion">
         <h2>Descripción del Proyecto</h2>
-        <p>Este proyecto consistió en la construcción/reparación de una embarcación tipo [nombre], fabricada en fibra de vidrio reforzada, cumpliendo con los estándares solicitados por el cliente.</p>
-        <ul>
-          <li><strong>Cliente:</strong> Particular / Empresa / Institución</li>
-          <li><strong>Duración:</strong> 4 semanas</li>
-          <li><strong>Servicios aplicados:</strong> Carpintería naval, pintura, instalación eléctrica</li>
-          <li><strong>Materiales:</strong> Fibra de vidrio, resinas, pintura marina</li>
-        </ul>
+        <section class="ficha-tecnica">
+          <h2>Ficha Técnica del Proyecto</h2>
+          <ul>
+            <li><strong>Cliente:</strong> [Nombre del cliente o tipo]</li>
+            <li><strong>Ubicación:</strong> [Ciudad, Región]</li>
+            <li><strong>Duración:</strong> [Semanas o meses]</li>
+            <li><strong>Tipo de Proyecto:</strong> [Construcción / Reparación / Modular]</li>
+            <li><strong>Servicios Aplicados:</strong> [Construcción, pintura, motorización...]</li>
+            <li><strong>Materiales:</strong> [Fibra de vidrio, resinas, madera, etc.]</li>
+          </ul>
+        </section>        
       </div>
   
       <div class="proyecto-galeria">
         <h2>Galería del Proyecto</h2>
         <div class="galeria-grid">
-          <img src="img/proyecto/1.jpg" alt="Imagen 1" loading="lazy">
-          <img src="img/proyecto/2.jpg" alt="Imagen 2" loading="lazy">
-          <img src="img/proyecto/3.jpg" alt="Imagen 3" loading="lazy">
-          <img src="img/proyecto/4.jpg" alt="Imagen 4" loading="lazy">
+          <img src="img/proyecto/1.webp" alt="Imagen 1" loading="lazy">
+          <img src="img/proyecto/2.webp" alt="Imagen 2" loading="lazy">
+          <img src="img/proyecto/3.webp" alt="Imagen 3" loading="lazy">
+          <img src="img/proyecto/4.webp" alt="Imagen 4" loading="lazy">
         </div>
       </div>
   
       <div class="proyecto-cta">
-        <p>¿Tienes un proyecto similar? <a href="../index.html#cotiza" class="btn-volver">Solicita tu cotización</a></p>
-        <p><a href="../index.html#portafolio" class="btn-volver">Volver al Portafolio</a></p>
+        <p>¿Tienes un proyecto similar? <a href="index.html#cotiza" class="btn-volver">Solicita tu cotización</a></p>
+        <p><a href="/portafolio.html" class="btn-volver">Volver al Portafolio</a></p>
       </div>
     </div>
   </section>
