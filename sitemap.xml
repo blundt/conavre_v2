@@ -125,4 +125,26 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <url>
+  <loc>https://www.conavre.com/blog/beneficios-trimaranes.html</loc>
+  <lastmod>2025-04-25</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+</url>
+
+<url>
+  <loc>https://www.conavre.com/blog/mantenimiento-preventivo-fibra.html</loc>
+  <lastmod>2025-04-25</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+</url>
+
+<url>
+  <loc>https://www.conavre.com/blog/diseno-moldes-fibra.html</loc>
+  <lastmod>2025-04-25</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+</url>
+
 </urlset>
