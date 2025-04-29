@@ -227,6 +227,7 @@
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center; /* Centrar contenido dentro de la tarjeta */
 }
 .related-card:hover {
   transform: translateY(-5px);
@@ -242,12 +243,24 @@
   margin: 12px;
   color: var(--negro-texto);
 }
+.related-card p {
+  margin: 0 12px 16px;
+  color: var(--gris-texto);
+}
 .related-card a {
+  display: inline-block;
+  margin-bottom: 12px;
   text-decoration: none;
 }
 .related-card a:hover h3 {
   color: var(--azul-marca);
 }
+
+.articulos-relacionados .blog-card h3 {
+  text-align: center;
+  margin: 20px auto 10px auto;
+}
+
 
 /* CTA Cotización */
 .cta-cotiza {
@@ -417,3 +430,31 @@
     color: white;
   }
   
+  /* FAQ */
+.faq {
+  padding: 60px 20px;
+  background-color: var(--gris-fondo);
+}
+.faq .container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.faq h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: var(--negro-texto);
+  text-align: center;
+}
+.faq-item {
+  margin-bottom: 25px;
+}
+.faq-item h3 {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+  color: var(--azul-marca);
+}
+.faq-item p {
+  font-size: 1.05em;
+  line-height: 1.7;
+  color: var(--gris-texto);
+}
