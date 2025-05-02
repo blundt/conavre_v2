@@ -155,6 +155,18 @@ FilePond.create(document.getElementById("archivo"), {
   labelButtonProcessItem: "Subir",
 });
 
+if (location.hostname === 'www.conavre.com' || location.hostname === 'conavre.com') {
+  const gaScript = document.createElement('script');
+  gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-SLX90JRP7G';
+  gaScript.async = true;
+  document.head.appendChild(gaScript);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+
+  gtag('js', new Date());
+  gtag('config', 'G-SLX90JRP7G');
+}
 
 
 
