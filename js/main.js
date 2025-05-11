@@ -135,6 +135,7 @@ if (window.FilePond) {
   );
 
   FilePond.create(document.getElementById("archivo"), {
+    name: 'archivo[]',
     allowMultiple: true,
     maxFileSize: "5MB",
     server: false, // ⬅️ ESTA LÍNEA ES CLAVE
