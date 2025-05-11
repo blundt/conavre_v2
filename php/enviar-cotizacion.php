@@ -43,7 +43,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 // Validar reCAPTCHA
 $recaptcha = $_POST['recaptcha_response'];
-$secret = '6LcuQxcrAAAAAGo0E-CZVQxM9OvmXswZfhEd41gB';
+$secret = '6LcuQxcrAAAAAFhF3hKt7frLi7BTgzpX98sLXBFR';
 
 $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$recaptcha");
 $captcha_success = json_decode($verify);
