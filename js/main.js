@@ -127,32 +127,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // FilePond inicialización y configuración
-  if (window.FilePond) {
-    FilePond.registerPlugin(
-      FilePondPluginImagePreview,
-      FilePondPluginFileValidateSize
-    );
+// FilePond inicialización y configuración
+if (window.FilePond) {
+  FilePond.registerPlugin(
+    FilePondPluginImagePreview,
+    FilePondPluginFileValidateSize
+  );
 
-    FilePond.create(document.getElementById("archivo"), {
-      allowMultiple: true,
-      maxFileSize: "5MB",
-      labelIdle: `Arrastra o <span class="filepond--label-action">explora</span> tus archivos`,
-      labelMaxFileSizeExceeded: "El archivo es muy grande",
-      labelMaxFileSize: "Máximo permitido es {filesize}",
-      labelFileLoading: "Cargando...",
-      labelFileProcessing: "Subiendo...",
-      labelFileRemoveError: "Error al eliminar",
-      labelTapToCancel: "Toca para cancelar",
-      labelTapToRetry: "Toca para reintentar",
-      labelTapToUndo: "Toca para deshacer",
-      labelButtonRemoveItem: "Eliminar",
-      labelButtonAbortItemLoad: "Cancelar",
-      labelButtonRetryItemLoad: "Reintentar",
-      labelButtonAbortItemProcessing: "Cancelar",
-      labelButtonUndoItemProcessing: "Deshacer",
-      labelButtonRetryItemProcessing: "Reintentar",
-      labelButtonProcessItem: "Subir",
-    });
-  }
+  FilePond.create(document.getElementById("archivo"), {
+    allowMultiple: true,
+    maxFileSize: "5MB",
+    server: false, // ⬅️ ESTA LÍNEA ES CLAVE
+    labelIdle: `Arrastra o <span class="filepond--label-action">explora</span> tus archivos`,
+    labelMaxFileSizeExceeded: "El archivo es muy grande",
+    labelMaxFileSize: "Máximo permitido es {filesize}",
+    labelFileLoading: "Cargando...",
+    labelFileProcessing: "Subiendo...",
+    labelFileRemoveError: "Error al eliminar",
+    labelTapToCancel: "Toca para cancelar",
+    labelTapToRetry: "Toca para reintentar",
+    labelTapToUndo: "Toca para deshacer",
+    labelButtonRemoveItem: "Eliminar",
+    labelButtonAbortItemLoad: "Cancelar",
+    labelButtonRetryItemLoad: "Reintentar",
+    labelButtonAbortItemProcessing: "Cancelar",
+    labelButtonUndoItemProcessing: "Deshacer",
+    labelButtonRetryItemProcessing: "Reintentar",
+    labelButtonProcessItem: "Subir",
+  });
+}
 });

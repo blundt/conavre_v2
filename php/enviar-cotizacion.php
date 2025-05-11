@@ -63,6 +63,12 @@ $mensaje .= "Descripción:\n$descripcion\n";
 // Procesar archivo adjunto
 $adjunto = '';
 if (isset($_FILES['archivo']) && is_array($_FILES['archivo']['name'])) {
+
+  // ⬇️ Verificación de que al menos 1 archivo fue recibido
+  if (empty($_FILES['archivo']['name'][0])) {
+      responder("⚠️ No se recibió ningún archivo.", 400);
+  }
+
   for ($i = 0; $i < count($_FILES['archivo']['name']); $i++) {
     if ($_FILES['archivo']['error'][$i] === UPLOAD_ERR_OK) {
       $nombre_original = basename($_FILES['archivo']['name'][$i]);
@@ -90,7 +96,6 @@ if (isset($_FILES['archivo']) && is_array($_FILES['archivo']['name'])) {
     }
   }
 }
-
 
 // Encabezados MIME
 $boundary = "_SeparadorDePartes_";
