@@ -49,7 +49,7 @@
     <priority>0.8</priority>
   </url>
 
-    <url>
+  <url>
     <loc>https://www.conavre.com/proyecto-lancha-taylor.html</loc>
     <lastmod>2025-04-22</lastmod>
     <changefreq>monthly</changefreq>
@@ -85,6 +85,49 @@
   </url>
 
   <url>
+    <loc>https://www.conavre.com/proyecto-patricia-del-carmen.html</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.conavre.com/proyecto-la-reina-iii.html</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.conavre.com/proyecto-malyn-i.html</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.conavre.com/proyecto-stella-matutina.html</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+
+  <url>
+    <loc>https://www.conavre.com/servicios-conavre.html</loc>
+    <lastmod>2025-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.conavre.com/construccion-embarcaciones.html</loc>
+    <lastmod>2025-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>https://www.conavre.com/blog.html</loc>
     <lastmod>2025-04-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -113,20 +156,6 @@
   </url>
 
   <url>
-    <loc>https://www.conavre.com/servicios-conavre.html</loc>
-    <lastmod>2025-04-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.conavre.com/construccion-embarcaciones.html</loc>
-    <lastmod>2025-04-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
     <loc>https://www.conavre.com/blog/reparacion-embarcaciones-quinta-region.html</loc>
     <lastmod>2025-04-16</lastmod>
     <changefreq>monthly</changefreq>
@@ -148,24 +177,24 @@
   </url>
 
   <url>
-  <loc>https://www.conavre.com/blog/beneficios-trimaranes.html</loc>
-  <lastmod>2025-04-25</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.7</priority>
-</url>
+    <loc>https://www.conavre.com/blog/beneficios-trimaran.html</loc>
+    <lastmod>2025-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-<url>
-  <loc>https://www.conavre.com/blog/mantenimiento-preventivo-fibra.html</loc>
-  <lastmod>2025-04-25</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.7</priority>
-</url>
+  <url>
+    <loc>https://www.conavre.com/blog/mantenimiento-preventivo-fibra.html</loc>
+    <lastmod>2025-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-<url>
-  <loc>https://www.conavre.com/blog/diseno-moldes-fibra.html</loc>
-  <lastmod>2025-04-25</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.7</priority>
-</url>
+  <url>
+    <loc>https://www.conavre.com/blog/diseno-moldes-fibra.html</loc>
+    <lastmod>2025-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
 </urlset>
