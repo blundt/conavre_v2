@@ -96,10 +96,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const pond = FilePond.find(document.getElementById('archivo'));
         if (pond) pond.removeFiles();
       }
-    } catch {
+    } catch (err) {
+      console.error('Fallo en fetch o JSON:', err);
+      const txt = await r.text?.();      // puede no existir si fetch falló
+      console.log('Respuesta bruta:', txt);
       texto.textContent = '⚠️ Error al enviar. Intenta más tarde.';
       resp.className    = 'respuesta-form error fade-in';
     }
+
   }
 
   close.addEventListener('click', () => (resp.style.display = 'none'));
