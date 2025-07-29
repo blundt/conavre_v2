@@ -7,6 +7,8 @@ $extensiones_permitidas = ['jpg','jpeg','png','gif','pdf'];
 
 /* OPCIONAL: no mostrar avisos PHP al visitante */
 ini_set('display_errors', 0);
+error_log('DEBUG $_FILES = '.print_r($_FILES, true));
+
 
 /* ───────── Función respuesta JSON ───────── */
 function responder($mensaje, $codigo = 200) {
