@@ -555,8 +555,3 @@ body.scrolled .scroll-indicator {
   margin-top: 5px;
 }
 
-/* ─── Oculta por completo el input nativo que FilePond mantiene ─── */
-.form-group input.filepond--browser {
-  display: none !important;   /* lo quita del flujo */
-}
-

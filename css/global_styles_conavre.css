@@ -402,11 +402,3 @@ img {
   line-height: 1.6;
   color: var(--gris-texto);
 }
-
-.form-group input.filepond--browser {
-  width: 0 !important;
-  height: 0 !important;
-  opacity: 0 !important;
-  position: absolute !important;
-  pointer-events: none !important;
-}
