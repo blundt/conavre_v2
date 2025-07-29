@@ -48,8 +48,15 @@ $secret = '6LcuQxcrAAAAAFhF3hKt7frLi7BTgzpX98sLXBFR';
 $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$recaptcha");
 $captcha_success = json_decode($verify);
 
-if (!$captcha_success->success || $captcha_success->score < 0.5) {
-    responder("Verificación reCAPTCHA fallida.", 403);
+$umbral = 0.3;                     // 0.3 suele ser suficiente
+if (!$captcha_success->success) {
+    responder("Verificación reCAPTCHA fallida.",403);
+}
+if ($captcha_success->action !== 'cotizar') {
+    responder("Acción reCAPTCHA no coincide.", 403);
+}
+if ($captcha_success->score < $umbral) {
+    responder("Score bajo de reCAPTCHA ({$captcha_success->score}).", 403);
 }
 
 // Preparar mensaje

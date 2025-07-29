@@ -1,160 +1,134 @@
-// Google Analytics solo en producción
+// Google Analytics – solo en producción
 if (location.hostname === 'www.conavre.com' || location.hostname === 'conavre.com') {
-  const gaScript = document.createElement('script');
-  gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-SLX90JRP7G';
-  gaScript.async = true;
-
-  gaScript.onload = () => {
+  const ga = document.createElement('script');
+  ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-SLX90JRP7G';
+  ga.async = true;
+  ga.onload = () => {
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
-
     gtag('js', new Date());
     gtag('config', 'G-SLX90JRP7G');
   };
-
-  document.head.appendChild(gaScript);
+  document.head.appendChild(ga);
 }
 
-// Scroll detectado (para ocultar scroll-indicator)
-window.addEventListener('scroll', function () {
-  if (window.scrollY > 400) {
-    document.body.classList.add('scrolled');
-  } else {
-    document.body.classList.remove('scrolled');
-  }
+// Ocultar indicador de scroll
+window.addEventListener('scroll', () => {
+  document.body.classList.toggle('scrolled', window.scrollY > 400);
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Menú móvil toggle
-  const menuToggle = document.getElementById("menu-toggle");
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ───────── Menú móvil ───────── */
+  const menuToggle = document.getElementById('menu-toggle');
   if (menuToggle) {
-    menuToggle.addEventListener("click", () => {
-      document.getElementById("nav-principal").classList.toggle("show");
-    });
+    menuToggle.addEventListener('click', () =>
+      document.getElementById('nav-principal').classList.toggle('show')
+    );
   }
 
-  // Lightbox para imágenes
-  const overlay = document.createElement('div');
-  overlay.className = 'lightbox-overlay';
-  const img = document.createElement('img');
+  /* ───────── Lightbox de imágenes ───────── */
+  const overlay = Object.assign(document.createElement('div'), { className: 'lightbox-overlay' });
+  const img      = document.createElement('img');
   overlay.appendChild(img);
   document.body.appendChild(overlay);
 
-  document.querySelectorAll('.lightbox-trigger').forEach(image => {
-    image.addEventListener('click', () => {
-      img.src = image.src;
+  document.querySelectorAll('.lightbox-trigger').forEach(el =>
+    el.addEventListener('click', () => {
+      img.src = el.src;
       overlay.style.display = 'flex';
-    });
-  });
+    })
+  );
+  overlay.addEventListener('click', () => (overlay.style.display = 'none'));
 
-  overlay.addEventListener('click', () => {
-    overlay.style.display = 'none';
-  });
+  /* ───────── Animaciones generales ───────── */
+  const animables = document.querySelectorAll('.animar-aparicion, .animar-cta');
+  const obs       = new IntersectionObserver(es =>
+    es.forEach(e => e.isIntersecting && e.target.classList.add('animar-activo')), { threshold: 0.2 }
+  );
+  animables.forEach(el => obs.observe(el));
 
-  // Animaciones generales al hacer scroll (cta y aparición)
-  const animaciones = document.querySelectorAll('.animar-aparicion, .animar-cta');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animar-activo');
-      }
-    });
-  }, { threshold: 0.2 });
-  animaciones.forEach(el => observer.observe(el));
+  const tarjetas  = document.querySelectorAll('.animar-tarjeta');
+  const obsCards  = new IntersectionObserver((es) =>
+    es.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('animar-activo'), i * 100);
+    }), { threshold: 0.2 }
+  );
+  tarjetas.forEach(el => obsCards.observe(el));
 
-  // Animaciones de tarjetas
-  const tarjetas = document.querySelectorAll('.animar-tarjeta');
-  const observerTarjetas = new IntersectionObserver(entries => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('animar-activo');
-        }, index * 100);
-      }
-    });
-  }, { threshold: 0.2 });
-  tarjetas.forEach(el => observerTarjetas.observe(el));
+  /* ───────── Formulario de cotización ───────── */
+  const form   = document.getElementById('form-cotiza');
+  const resp   = document.getElementById('respuesta-formulario');
+  const texto  = document.getElementById('mensaje-texto');
+  const close  = document.getElementById('cerrar-respuesta');
 
-  // Lógica del formulario de cotización
-  const formulario = document.getElementById("form-cotiza");
-  const respuesta = document.getElementById("respuesta-formulario");
-  const mensajeTexto = document.getElementById("mensaje-texto");
-  const cerrarBtn = document.getElementById("cerrar-respuesta");
+  form.addEventListener('submit', e => {
+    e.preventDefault();
 
-  if (formulario && respuesta && mensajeTexto && cerrarBtn) {
-    formulario.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      respuesta.style.display = "block";
-      respuesta.style.opacity = 0;
-      mensajeTexto.innerHTML = "⏳ Enviando solicitud...";
-      mensajeTexto.style.color = "#444";
-      const datos = new FormData(formulario);
-
-      try {
-        const respuestaServidor = await fetch("php/enviar-cotizacion.php", {
-          method: "POST",
-          body: datos,
+    grecaptcha.ready(() => {
+      grecaptcha.execute('6LcuQxcrAAAAALFC3I5dGCo16XAcjz2b58b836TN', { action: 'cotizar' })
+        .then(token => {
+          document.getElementById('recaptchaResponse').value = token;
+          enviarFormulario();
         });
-        const resultado = await respuestaServidor.json();
-        respuesta.classList.remove("exito", "error");
+    });
+  });
 
-        if (respuestaServidor.ok) {
-          mensajeTexto.innerHTML = `✅ <strong>${resultado.mensaje}</strong>`;
-          mensajeTexto.style.color = "#155724";
-          respuesta.classList.add("exito");
-          formulario.reset();
-          const pond = FilePond.find(document.getElementById("archivo"));
-          if (pond) pond.removeFiles();
-        } else {
-          mensajeTexto.innerHTML = `❌ ${resultado.mensaje}`;
-          mensajeTexto.style.color = "#721c24";
-          respuesta.classList.add("error");
-        }
-      } catch (error) {
-        mensajeTexto.innerHTML = "⚠️ Error al enviar. Intenta más tarde.";
-        mensajeTexto.style.color = "red";
+  async function enviarFormulario() {
+    resp.style.display = 'block';
+    texto.textContent  = '⏳ Enviando solicitud...';
+    const datos = new FormData(form);
+
+    try {
+      const r = await fetch('php/enviar-cotizacion.php', { method: 'POST', body: datos });
+      const j = await r.json();
+
+      texto.innerHTML = r.ok
+        ? `✅ <strong>${j.mensaje}</strong>`
+        : `❌ ${j.mensaje}`;
+
+      resp.className = r.ok
+        ? 'respuesta-form exito fade-in'
+        : 'respuesta-form error fade-in';
+
+      if (r.ok) {
+        form.reset();
+        const pond = FilePond.find(document.getElementById('archivo'));
+        if (pond) pond.removeFiles();
       }
-
-      respuesta.classList.remove("fade-in");
-      void respuesta.offsetWidth;
-      respuesta.classList.add("fade-in");
-    });
-
-    cerrarBtn.addEventListener("click", () => {
-      respuesta.style.display = "none";
-      mensajeTexto.innerHTML = "";
-      respuesta.classList.remove("exito", "error");
-    });
+    } catch {
+      texto.textContent = '⚠️ Error al enviar. Intenta más tarde.';
+      resp.className    = 'respuesta-form error fade-in';
+    }
   }
 
-// FilePond inicialización y configuración
-if (window.FilePond) {
-  FilePond.registerPlugin(
-    FilePondPluginImagePreview,
-    FilePondPluginFileValidateSize
-  );
+  close.addEventListener('click', () => (resp.style.display = 'none'));
 
-  FilePond.create(document.getElementById("archivo"), {
-    name: 'archivo[]',
-    allowMultiple: true,
-    maxFileSize: "5MB",
-    server: false, // ⬅️ ESTA LÍNEA ES CLAVE
-    labelIdle: `Arrastra o <span class="filepond--label-action">explora</span> tus archivos`,
-    labelMaxFileSizeExceeded: "El archivo es muy grande",
-    labelMaxFileSize: "Máximo permitido es {filesize}",
-    labelFileLoading: "Cargando...",
-    labelFileProcessing: "Subiendo...",
-    labelFileRemoveError: "Error al eliminar",
-    labelTapToCancel: "Toca para cancelar",
-    labelTapToRetry: "Toca para reintentar",
-    labelTapToUndo: "Toca para deshacer",
-    labelButtonRemoveItem: "Eliminar",
-    labelButtonAbortItemLoad: "Cancelar",
-    labelButtonRetryItemLoad: "Reintentar",
-    labelButtonAbortItemProcessing: "Cancelar",
-    labelButtonUndoItemProcessing: "Deshacer",
-    labelButtonRetryItemProcessing: "Reintentar",
-    labelButtonProcessItem: "Subir",
-  });
-}
+  /* ───────── FilePond ───────── */
+  if (window.FilePond) {
+    FilePond.registerPlugin(FilePondPluginImagePreview, FilePondPluginFileValidateSize);
+
+    FilePond.create(document.getElementById('archivo'), {
+      name: 'archivo[]',
+      allowMultiple: true,
+      maxFileSize: '5MB',
+      server: false,
+      labelIdle: 'Arrastra o <span class="filepond--label-action">explora</span> tus archivos',
+      labelMaxFileSizeExceeded: 'El archivo es muy grande',
+      labelMaxFileSize: 'Máximo permitido {filesize}',
+      labelFileLoading: 'Cargando...',
+      labelFileProcessing: 'Subiendo...',
+      labelFileRemoveError: 'Error al eliminar',
+      labelTapToCancel: 'Toca para cancelar',
+      labelTapToRetry: 'Toca para reintentar',
+      labelTapToUndo: 'Toca para deshacer',
+      labelButtonRemoveItem: 'Eliminar',
+      labelButtonAbortItemLoad: 'Cancelar',
+      labelButtonRetryItemLoad: 'Reintentar',
+      labelButtonAbortItemProcessing: 'Cancelar',
+      labelButtonUndoItemProcessing: 'Deshacer',
+      labelButtonRetryItemProcessing: 'Reintentar',
+      labelButtonProcessItem: 'Subir'
+    });
+  }
 });
