@@ -1,7 +1,7 @@
 // Google Analytics – solo en producción
 if (location.hostname === 'www.conavre.com' || location.hostname === 'conavre.com') {
   const ga = document.createElement('script');
-  ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-SLX90JRP7G';
+  ga.src   = 'https://www.googletagmanager.com/gtag/js?id=G-SLX90JRP7G';
   ga.async = true;
   ga.onload = () => {
     window.dataLayer = window.dataLayer || [];
@@ -13,9 +13,9 @@ if (location.hostname === 'www.conavre.com' || location.hostname === 'conavre.co
 }
 
 // Ocultar indicador de scroll
-window.addEventListener('scroll', () => {
-  document.body.classList.toggle('scrolled', window.scrollY > 400);
-});
+window.addEventListener('scroll', () =>
+  document.body.classList.toggle('scrolled', window.scrollY > 400)
+);
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ───────── Lightbox de imágenes ───────── */
   const overlay = Object.assign(document.createElement('div'), { className: 'lightbox-overlay' });
-  const img      = document.createElement('img');
+  const img     = document.createElement('img');
   overlay.appendChild(img);
   document.body.appendChild(overlay);
 
@@ -43,13 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ───────── Animaciones generales ───────── */
   const animables = document.querySelectorAll('.animar-aparicion, .animar-cta');
-  const obs       = new IntersectionObserver(es =>
+  const obs = new IntersectionObserver(es =>
     es.forEach(e => e.isIntersecting && e.target.classList.add('animar-activo')), { threshold: 0.2 }
   );
   animables.forEach(el => obs.observe(el));
 
-  const tarjetas  = document.querySelectorAll('.animar-tarjeta');
-  const obsCards  = new IntersectionObserver((es) =>
+  const tarjetas = document.querySelectorAll('.animar-tarjeta');
+  const obsCards = new IntersectionObserver(es =>
     es.forEach((e, i) => {
       if (e.isIntersecting) setTimeout(() => e.target.classList.add('animar-activo'), i * 100);
     }), { threshold: 0.2 }
@@ -57,10 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
   tarjetas.forEach(el => obsCards.observe(el));
 
   /* ───────── Formulario de cotización ───────── */
-  const form   = document.getElementById('form-cotiza');
-  const resp   = document.getElementById('respuesta-formulario');
-  const texto  = document.getElementById('mensaje-texto');
-  const close  = document.getElementById('cerrar-respuesta');
+  const form  = document.getElementById('form-cotiza');
+  const resp  = document.getElementById('respuesta-formulario');
+  const texto = document.getElementById('mensaje-texto');
+  const close = document.getElementById('cerrar-respuesta');
 
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -77,11 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
   async function enviarFormulario() {
     resp.style.display = 'block';
     texto.textContent  = '⏳ Enviando solicitud...';
+
     const datos = new FormData(form);
+    let   raw   = null;   // copia de respuesta para debug
+    let   r     = null;   // Response object
 
     try {
-      const r = await fetch('php/enviar-cotizacion.php', { method: 'POST', body: datos });
-      const j = await r.json();
+      r   = await fetch('/php/enviar-cotizacion.php', { method: 'POST', body: datos });
+      raw = await r.clone().text();          // por si el JSON fallase
+      const j = JSON.parse(raw);
 
       texto.innerHTML = r.ok
         ? `✅ <strong>${j.mensaje}</strong>`
@@ -93,46 +97,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (r.ok) {
         form.reset();
-        const pond = FilePond.find(document.getElementById('archivo'));
-        if (pond) pond.removeFiles();
+        const pondInst = window.FilePond && FilePond.find(document.getElementById('archivo'));
+        if (pondInst) pondInst.removeFiles();
       }
+
     } catch (err) {
       console.error('Fallo en fetch o JSON:', err);
-      const txt = await r.text?.();      // puede no existir si fetch falló
-      console.log('Respuesta bruta:', txt);
+      if (raw) console.log('Respuesta bruta:', raw);
       texto.textContent = '⚠️ Error al enviar. Intenta más tarde.';
       resp.className    = 'respuesta-form error fade-in';
     }
-
   }
 
   close.addEventListener('click', () => (resp.style.display = 'none'));
 
   /* ───────── FilePond ───────── */
-  if (window.FilePond) {
-    FilePond.registerPlugin(FilePondPluginImagePreview, FilePondPluginFileValidateSize);
-
-    FilePond.create(document.getElementById('archivo'), {
-      name: 'archivo[]',
-      allowMultiple: true,
-      maxFileSize: '5MB',
-      server: false,
-      labelIdle: 'Arrastra o <span class="filepond--label-action">explora</span> tus archivos',
-      labelMaxFileSizeExceeded: 'El archivo es muy grande',
-      labelMaxFileSize: 'Máximo permitido {filesize}',
-      labelFileLoading: 'Cargando...',
-      labelFileProcessing: 'Subiendo...',
-      labelFileRemoveError: 'Error al eliminar',
-      labelTapToCancel: 'Toca para cancelar',
-      labelTapToRetry: 'Toca para reintentar',
-      labelTapToUndo: 'Toca para deshacer',
-      labelButtonRemoveItem: 'Eliminar',
-      labelButtonAbortItemLoad: 'Cancelar',
-      labelButtonRetryItemLoad: 'Reintentar',
-      labelButtonAbortItemProcessing: 'Cancelar',
-      labelButtonUndoItemProcessing: 'Deshacer',
-      labelButtonRetryItemProcessing: 'Reintentar',
-      labelButtonProcessItem: 'Subir'
-    });
+  if (typeof FilePond === 'undefined') {
+    console.error('FilePond no se cargó: revisa la ruta o el CDN');
+    return; // evitamos ReferenceError posteriores
   }
+
+  FilePond.registerPlugin(
+    FilePondPluginImagePreview,
+    FilePondPluginFileValidateSize
+  );
+
+  FilePond.setOptions({
+    allowMultiple: true,
+    maxFileSize: '5MB',
+    name: 'archivo[]',
+    server: false,
+    labelIdle: 'Arrastra o <span class="filepond--label-action">explora</span> tus archivos',
+    labelMaxFileSizeExceeded: 'El archivo es muy grande',
+    labelMaxFileSize: 'Máximo permitido {filesize}'
+  });
+
+  // Convierte automáticamente cualquier <input class="filepond">
+  FilePond.parse(document.body);
 });

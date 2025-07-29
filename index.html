@@ -86,9 +86,13 @@
   <link rel="stylesheet" href="css/global_styles_conavre.css">
   <link rel="stylesheet" href="css/index.css">
 
-  <!-- FilePond -->
-  <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet">
-  <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css" rel="stylesheet">
+  <!-- FilePond Core + Plugins  (jsDelivr) -->
+  <script src="https://cdn.jsdelivr.net/npm/filepond-plugin-file-validate-size@2/dist/filepond-plugin-file-validate-size.min.js"
+  defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/filepond-plugin-image-preview@4/dist/filepond-plugin-image-preview.min.js"
+  defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/filepond@4/dist/filepond.min.js"
+  defer></script>
 
   <!-- reCAPTCHA v3 -->
   <script src="https://www.google.com/recaptcha/api.js?render=6LcuQxcrAAAAALFC3I5dGCo16XAcjz2b58b836TN"></script>
@@ -265,7 +269,7 @@
 
       <div class="form-group">
         <label for="archivo">Adjuntar imágenes o planos (opcional):</label>
-        <input type="file" id="archivo" name="archivo[]" multiple>
+        <input type="file" id="archivo" name="archivo[]" class="filepond" multiple>
         <small style="font-size:0.9em;color:#777;">
           Puedes arrastrar archivos o hacer clic para seleccionarlos. Tamaño máximo por archivo: 5MB.
         </small>
