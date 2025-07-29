@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
   FilePond.setOptions({
     allowMultiple: true,
     maxFileSize: '5MB',
-    name: 'archivo[]',
+    name: 'archivo',
     server: false,
     labelIdle: 'Arrastra o <span class="filepond--label-action">explora</span> tus archivos',
     labelMaxFileSizeExceeded: 'El archivo es muy grande',
