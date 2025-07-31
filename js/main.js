@@ -1,7 +1,7 @@
 /* Google Analytics – solo en producción */
 if (['www.conavre.com','conavre.com'].includes(location.hostname)) {
   const ga = document.createElement('script');
-  ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-SLX90JRP7G';
+  ga.src  = 'https://www.googletagmanager.com/gtag/js?id=G-SLX90JRP7G';
   ga.async = true;
   ga.onload = () => {
     window.dataLayer = window.dataLayer || [];
@@ -41,15 +41,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ───── Animaciones en scroll ───── */
   const animables = document.querySelectorAll('.animar-aparicion, .animar-cta');
-  new IntersectionObserver(ent =>
-    ent.forEach(e => e.isIntersecting && e.target.classList.add('animar-activo')), {threshold:0.2}
-  ).observeAll?.(animables) ?? animables.forEach(el=>obs.observe(el)); // Safari fallback
+  const obsAnim  = new IntersectionObserver(entries =>
+    entries.forEach(e => e.isIntersecting && e.target.classList.add('animar-activo')),
+    { threshold: 0.2 }
+  );
+  animables.forEach(el => obsAnim.observe(el));
 
-  const tarjetas = document.querySelectorAll('.animar-tarjeta');
-  new IntersectionObserver(ent =>
-    ent.forEach((e,i)=>e.isIntersecting&&setTimeout(()=>e.target.classList.add('animar-activo'),i*100)),
-    {threshold:0.2}
-  ).observeAll?.(tarjetas) ?? tarjetas.forEach(el=>obsT.observe(el));
+  const tarjetas  = document.querySelectorAll('.animar-tarjeta');
+  const obsCards  = new IntersectionObserver(entries =>
+    entries.forEach((e,i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('animar-activo'), i*100);
+    }),
+    { threshold: 0.2 }
+  );
+  tarjetas.forEach(el => obsCards.observe(el));
 
   /* ───── Formulario ───── */
   const form   = document.getElementById('form-cotiza');
@@ -60,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', e => {
     e.preventDefault();
     grecaptcha.ready(() => {
-      grecaptcha.execute('6LcuQxcrAAAAALFC3I5dGCo16XAcjz2b58b836TN', {action:'cotizar'})
+      grecaptcha.execute('6LcuQxcrAAAAALFC3I5dGCo16XAcjz2b58b836TN',{action:'cotizar'})
         .then(token => {
           document.getElementById('recaptchaResponse').value = token;
           enviar();
@@ -68,14 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  async function enviar(){
+  async function enviar() {
     resp.style.display = 'block';
     texto.textContent  = '⏳ Enviando solicitud…';
 
-    const datos = new FormData(form);            // incluye archivos
-    try{
-      const r  = await fetch('/php/enviar-cotizacion.php',{method:'POST',body:datos});
-      const j  = await r.json();
+    const datos = new FormData(form);
+    try {
+      const r = await fetch('/php/enviar-cotizacion.php',{method:'POST',body:datos});
+      const j = await r.json();
 
       texto.innerHTML = r.ok
         ? `✅ <strong>${j.mensaje}</strong>`
@@ -84,21 +89,21 @@ document.addEventListener('DOMContentLoaded', () => {
       resp.className = r.ok ? 'respuesta-form exito fade-in'
                             : 'respuesta-form error fade-in';
 
-      if (r.ok){
+      if (r.ok) {
         form.reset();
         FilePond.find(document.getElementById('archivo'))?.removeFiles();
       }
-    }catch(err){
+    } catch (err) {
       console.error(err);
       texto.textContent = '⚠️ Error al enviar. Intenta más tarde.';
       resp.className    = 'respuesta-form error fade-in';
     }
   }
 
-  cerrar.addEventListener('click', ()=> resp.style.display='none');
+  cerrar.addEventListener('click', () => resp.style.display='none');
 
   /* ───── FilePond ───── */
-  if (typeof FilePond==='undefined'){
+  if (typeof FilePond === 'undefined') {
     console.error('FilePond no se cargó');
     return;
   }
@@ -116,6 +121,5 @@ document.addEventListener('DOMContentLoaded', () => {
     labelIdle: 'Arrastra o <span class="filepond--label-action">explora</span> archivos (máx 5 MB)'
   });
 
-  /* Activa todos los <input class="filepond"> */
-  FilePond.parse(document.body);
+  FilePond.parse(document.body);          // activa todos los inputs .filepond
 });
