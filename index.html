@@ -86,24 +86,19 @@
   <link rel="stylesheet" href="css/global_styles_conavre.css">
   <link rel="stylesheet" href="css/index.css">
 
-  <!-- FilePond CSS (estilos) -->
-  <link href="https://cdn.jsdelivr.net/npm/filepond@4/dist/filepond.min.css"
-  rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/filepond-plugin-image-preview@4/dist/filepond-plugin-image-preview.min.css"
-  rel="stylesheet">
+<!-- FilePond CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/filepond@4/dist/filepond.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/filepond-plugin-image-preview@4/dist/filepond-plugin-image-preview.min.css" rel="stylesheet">
 
-  <!-- FilePond JS (funcionalidad) -->
-  <script src="https://cdn.jsdelivr.net/npm/filepond-plugin-file-validate-size@2/dist/filepond-plugin-file-validate-size.min.js"
-  defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/filepond-plugin-image-preview@4/dist/filepond-plugin-image-preview.min.js"
-  defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/filepond@4/dist/filepond.min.js"
-  defer></script>
+  <!-- FilePond JS + plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/filepond-plugin-file-validate-size@2/dist/filepond-plugin-file-validate-size.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/filepond-plugin-image-preview@4/dist/filepond-plugin-image-preview.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/filepond@4/dist/filepond.min.js" defer></script>
 
   <!-- reCAPTCHA v3 -->
   <script src="https://www.google.com/recaptcha/api.js?render=6LcuQxcrAAAAALFC3I5dGCo16XAcjz2b58b836TN"></script>
 
-  <!-- App JS (defer) -->
+  <!-- App JS -->
   <script src="js/main.js" defer></script>
 </head>
 
@@ -230,64 +225,69 @@
     </div>
     
   </section>
-<!-- FORMULARIO COTIZACIÓN -->
+ <!-- FORMULARIO COTIZACIÓN -->
   <section id="cotiza" class="cotiza-section">
     <h2>Cotiza tu Proyecto</h2>
-    <form class="cotiza-form" id="form-cotiza" enctype="multipart/form-data">
 
+    <form id="form-cotiza" class="cotiza-form" enctype="multipart/form-data">
       <!-- honeypot -->
-      <div style="display:none;">
-        <label>No completar:</label>
+      <div style="display:none">
+        <label>No completar</label>
         <input type="text" name="honeypot">
       </div>
 
       <!-- campos -->
       <div class="form-group">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
+        <label>Nombre
+          <input type="text" name="nombre" required>
+        </label>
       </div>
 
       <div class="form-group">
-        <label for="email">Correo Electrónico:</label>
-        <input type="email" id="email" name="email" required>
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
       </div>
 
       <div class="form-group">
-        <label for="telefono">Teléfono (opcional):</label>
-        <input type="tel" id="telefono" name="telefono">
+        <label>Teléfono
+          <input type="tel" name="telefono">
+        </label>
       </div>
 
       <div class="form-group">
-        <label for="tipo">Tipo de Proyecto:</label>
-        <select id="tipo" name="tipo" required>
-          <option value="">Seleccione una opción</option>
-          <option value="construccion">Construcción de embarcación</option>
-          <option value="reparacion">Reparación / Mantenimiento</option>
-          <option value="estructura">Estructura personalizada / Camper</option>
-          <option value="otro">Otro</option>
-        </select>
+        <label>Tipo de proyecto
+          <select name="tipo" required>
+            <option value="">Seleccione…</option>
+            <option value="construccion">Construcción</option>
+            <option value="reparacion">Reparación / Mantenimiento</option>
+            <option value="estructura">Estructura personalizada</option>
+            <option value="otro">Otro</option>
+          </select>
+        </label>
       </div>
 
       <div class="form-group">
-        <label for="descripcion">Descripción del Proyecto:</label>
-        <textarea id="descripcion" name="descripcion" rows="5" required></textarea>
+        <label>Descripción
+          <textarea name="descripcion" rows="5" required></textarea>
+        </label>
       </div>
 
       <div class="form-group">
-        <label for="archivo">Adjuntar imágenes o planos (opcional):</label>
-        <input type="file" id="archivo" name="archivo" class="filepond" multiple>
-        <small style="font-size:0.9em;color:#777;">
-          Puedes arrastrar archivos o hacer clic para seleccionarlos. Tamaño máximo por archivo: 5MB.
-        </small>
+        <label>Adjuntar imágenes o planos
+          <!--  SIN corchetes  -->
+          <input type="file" id="archivo" name="archivo" class="filepond" multiple>
+        </label>
+        <small style="font-size:.9em;color:#777">Máximo 5 MB por archivo</small>
       </div>
 
-      <!-- campo oculto reCAPTCHA -->
+      <!-- reCAPTCHA -->
       <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 
       <button type="submit" class="btn-enviar">Enviar Cotización</button>
 
-      <div id="respuesta-formulario" class="form-group respuesta-form fade-in" style="display:none;position:relative;">
-        <button type="button" id="cerrar-respuesta" aria-label="Cerrar" style="position:absolute;top:5px;right:10px;background:none;border:none;font-size:18px;cursor:pointer;">✖</button>
+      <div id="respuesta-formulario" class="respuesta-form" style="display:none">
+        <button id="cerrar-respuesta" type="button" aria-label="Cerrar">✖</button>
         <div id="mensaje-texto"></div>
       </div>
     </form>

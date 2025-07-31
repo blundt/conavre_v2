@@ -1,120 +1,106 @@
-// Google Analytics – solo en producción
-if (location.hostname === 'www.conavre.com' || location.hostname === 'conavre.com') {
+/* Google Analytics – solo en producción */
+if (['www.conavre.com','conavre.com'].includes(location.hostname)) {
   const ga = document.createElement('script');
-  ga.src   = 'https://www.googletagmanager.com/gtag/js?id=G-SLX90JRP7G';
+  ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-SLX90JRP7G';
   ga.async = true;
   ga.onload = () => {
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-SLX90JRP7G');
   };
   document.head.appendChild(ga);
 }
 
-// Ocultar indicador de scroll
-window.addEventListener('scroll', () =>
-  document.body.classList.toggle('scrolled', window.scrollY > 400)
+/* Ocultar indicador scroll */
+addEventListener('scroll', () =>
+  document.body.classList.toggle('scrolled', scrollY > 400)
 );
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ───────── Menú móvil ───────── */
-  const menuToggle = document.getElementById('menu-toggle');
-  if (menuToggle) {
-    menuToggle.addEventListener('click', () =>
-      document.getElementById('nav-principal').classList.toggle('show')
-    );
-  }
+  /* ───── Menú móvil ───── */
+  const menuBtn = document.getElementById('menu-toggle');
+  menuBtn?.addEventListener('click', () =>
+    document.getElementById('nav-principal')?.classList.toggle('show')
+  );
 
-  /* ───────── Lightbox de imágenes ───────── */
-  const overlay = Object.assign(document.createElement('div'), { className: 'lightbox-overlay' });
-  const img     = document.createElement('img');
-  overlay.appendChild(img);
+  /* ───── Lightbox ───── */
+  const overlay = Object.assign(document.createElement('div'), {className:'lightbox-overlay'});
+  const imgBig  = document.createElement('img');
+  overlay.appendChild(imgBig);
   document.body.appendChild(overlay);
 
   document.querySelectorAll('.lightbox-trigger').forEach(el =>
     el.addEventListener('click', () => {
-      img.src = el.src;
+      imgBig.src = el.src;
       overlay.style.display = 'flex';
     })
   );
-  overlay.addEventListener('click', () => (overlay.style.display = 'none'));
+  overlay.addEventListener('click', () => overlay.style.display = 'none');
 
-  /* ───────── Animaciones generales ───────── */
+  /* ───── Animaciones en scroll ───── */
   const animables = document.querySelectorAll('.animar-aparicion, .animar-cta');
-  const obs = new IntersectionObserver(es =>
-    es.forEach(e => e.isIntersecting && e.target.classList.add('animar-activo')), { threshold: 0.2 }
-  );
-  animables.forEach(el => obs.observe(el));
+  new IntersectionObserver(ent =>
+    ent.forEach(e => e.isIntersecting && e.target.classList.add('animar-activo')), {threshold:0.2}
+  ).observeAll?.(animables) ?? animables.forEach(el=>obs.observe(el)); // Safari fallback
 
   const tarjetas = document.querySelectorAll('.animar-tarjeta');
-  const obsCards = new IntersectionObserver(es =>
-    es.forEach((e, i) => {
-      if (e.isIntersecting) setTimeout(() => e.target.classList.add('animar-activo'), i * 100);
-    }), { threshold: 0.2 }
-  );
-  tarjetas.forEach(el => obsCards.observe(el));
+  new IntersectionObserver(ent =>
+    ent.forEach((e,i)=>e.isIntersecting&&setTimeout(()=>e.target.classList.add('animar-activo'),i*100)),
+    {threshold:0.2}
+  ).observeAll?.(tarjetas) ?? tarjetas.forEach(el=>obsT.observe(el));
 
-  /* ───────── Formulario de cotización ───────── */
-  const form  = document.getElementById('form-cotiza');
-  const resp  = document.getElementById('respuesta-formulario');
-  const texto = document.getElementById('mensaje-texto');
-  const close = document.getElementById('cerrar-respuesta');
+  /* ───── Formulario ───── */
+  const form   = document.getElementById('form-cotiza');
+  const resp   = document.getElementById('respuesta-formulario');
+  const texto  = document.getElementById('mensaje-texto');
+  const cerrar = document.getElementById('cerrar-respuesta');
 
   form.addEventListener('submit', e => {
     e.preventDefault();
-
     grecaptcha.ready(() => {
-      grecaptcha.execute('6LcuQxcrAAAAALFC3I5dGCo16XAcjz2b58b836TN', { action: 'cotizar' })
+      grecaptcha.execute('6LcuQxcrAAAAALFC3I5dGCo16XAcjz2b58b836TN', {action:'cotizar'})
         .then(token => {
           document.getElementById('recaptchaResponse').value = token;
-          enviarFormulario();
+          enviar();
         });
     });
   });
 
-  async function enviarFormulario() {
+  async function enviar(){
     resp.style.display = 'block';
-    texto.textContent  = '⏳ Enviando solicitud...';
+    texto.textContent  = '⏳ Enviando solicitud…';
 
-    const datos = new FormData(form);
-    let   raw   = null;   // copia de respuesta para debug
-    let   r     = null;   // Response object
-
-    try {
-      r   = await fetch('/php/enviar-cotizacion.php', { method: 'POST', body: datos });
-      raw = await r.clone().text();          // por si el JSON fallase
-      const j = JSON.parse(raw);
+    const datos = new FormData(form);            // incluye archivos
+    try{
+      const r  = await fetch('/php/enviar-cotizacion.php',{method:'POST',body:datos});
+      const j  = await r.json();
 
       texto.innerHTML = r.ok
         ? `✅ <strong>${j.mensaje}</strong>`
         : `❌ ${j.mensaje}`;
 
-      resp.className = r.ok
-        ? 'respuesta-form exito fade-in'
-        : 'respuesta-form error fade-in';
+      resp.className = r.ok ? 'respuesta-form exito fade-in'
+                            : 'respuesta-form error fade-in';
 
-      if (r.ok) {
+      if (r.ok){
         form.reset();
-        const pondInst = window.FilePond && FilePond.find(document.getElementById('archivo'));
-        if (pondInst) pondInst.removeFiles();
+        FilePond.find(document.getElementById('archivo'))?.removeFiles();
       }
-
-    } catch (err) {
-      console.error('Fallo en fetch o JSON:', err);
-      if (raw) console.log('Respuesta bruta:', raw);
+    }catch(err){
+      console.error(err);
       texto.textContent = '⚠️ Error al enviar. Intenta más tarde.';
       resp.className    = 'respuesta-form error fade-in';
     }
   }
 
-  close.addEventListener('click', () => (resp.style.display = 'none'));
+  cerrar.addEventListener('click', ()=> resp.style.display='none');
 
-  /* ───────── FilePond ───────── */
-  if (typeof FilePond === 'undefined') {
-    console.error('FilePond no se cargó: revisa la ruta o el CDN');
-    return; // evitamos ReferenceError posteriores
+  /* ───── FilePond ───── */
+  if (typeof FilePond==='undefined'){
+    console.error('FilePond no se cargó');
+    return;
   }
 
   FilePond.registerPlugin(
@@ -123,15 +109,13 @@ document.addEventListener('DOMContentLoaded', () => {
   );
 
   FilePond.setOptions({
+    name: 'archivo',          // <input name="archivo">
     allowMultiple: true,
     maxFileSize: '5MB',
-    name: 'archivo',
     server: false,
-    labelIdle: 'Arrastra o <span class="filepond--label-action">explora</span> tus archivos',
-    labelMaxFileSizeExceeded: 'El archivo es muy grande',
-    labelMaxFileSize: 'Máximo permitido {filesize}'
+    labelIdle: 'Arrastra o <span class="filepond--label-action">explora</span> archivos (máx 5 MB)'
   });
 
-  // Convierte automáticamente cualquier <input class="filepond">
+  /* Activa todos los <input class="filepond"> */
   FilePond.parse(document.body);
 });

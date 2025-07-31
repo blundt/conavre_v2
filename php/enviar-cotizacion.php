@@ -1,130 +1,99 @@
 <?php
 /* ───────── Configuración ───────── */
-$destino  = "contacto@conavre.com";
-$asunto   = "Nueva solicitud de cotización desde CONAVRE";
-$limite_archivo         = 5 * 1024 * 1024;                     // 5 MB
-$extensiones_permitidas = ['jpg','jpeg','png','gif','pdf'];
+$destino  = 'contacto@conavre.com';
+$asunto   = 'Nueva solicitud de cotización desde CONAVRE';
+$secret   = '6LcuQxcrAAAAAFhF3hKt7frLi7BTgzpX98sLXBFR';   // SECRET KEY v3
 
-/* OPCIONAL: no mostrar avisos PHP al visitante */
-ini_set('display_errors', 0);
-error_log('DEBUG $_FILES = '.print_r($_FILES, true));
-if (isset($_POST['modo_debug'])) {
-    responder($_FILES, 200);   // -- solo para inspeccionar
-}
+$max_size = 5 * 1024 * 1024;               // 5 MB
+$permitidas = ['jpg','jpeg','png','gif','pdf'];
 
-
-/* ───────── Función respuesta JSON ───────── */
-function responder($mensaje, $codigo = 200) {
-    http_response_code($codigo);
+/* ───────── Utilidades ───────── */
+function responder($msg, $code=200){
+    http_response_code($code);
     header('Content-Type: application/json');
-    echo json_encode(['mensaje' => $mensaje]);
+    echo json_encode(['mensaje'=>$msg]);
     exit;
 }
 
-/* Honeypot */
-if (!empty($_POST['honeypot'])) {
-    responder("Spam detectado", 403);
+/* ───────── Debug opcional ───────── */
+ini_set('display_errors', 0);              // no mostrar notices al usuario
+if (isset($_POST['modo_debug'])) {
+    responder($_FILES);                    // inspeccionar y salir
 }
 
-/* Campos requeridos */
-if (
-    empty($_POST['nombre']) ||
-    empty($_POST['email'])  ||
-    empty($_POST['tipo'])   ||
-    empty($_POST['descripcion']) ||
-    empty($_POST['recaptcha_response'])
-) {
-    responder("Faltan datos obligatorios.", 400);
+/* ───────── Honeypot ───────── */
+if (!empty($_POST['honeypot'])) responder('Spam detectado',403);
+
+/* ───────── Campos obligatorios ───────── */
+foreach (['nombre','email','tipo','descripcion','recaptcha_response'] as $c){
+    if (empty($_POST[$c])) responder('Faltan datos obligatorios',400);
 }
 
-/* Sanitización */
-$nombre      = htmlspecialchars(strip_tags($_POST['nombre']));
-$email       = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-$telefono    = htmlspecialchars(strip_tags($_POST['telefono'] ?? ''));
-$tipo        = htmlspecialchars(strip_tags($_POST['tipo']));
-$descripcion = htmlspecialchars(strip_tags($_POST['descripcion']));
+/* ───────── Sanitizar / validar ───────── */
+$nombre   = htmlspecialchars(strip_tags($_POST['nombre']));
+$email    = filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
+if (!filter_var($email,FILTER_VALIDATE_EMAIL)) responder('Correo inválido',400);
 
-/* Validación de email */
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    responder("Correo electrónico no válido.", 400);
-}
+$telefono = htmlspecialchars(strip_tags($_POST['telefono']??''));
+$tipo     = htmlspecialchars(strip_tags($_POST['tipo']));
+$desc     = htmlspecialchars(strip_tags($_POST['descripcion']));
 
-/* ───────── Verificar reCAPTCHA ───────── */
-$recaptcha = $_POST['recaptcha_response'];
-$secret    = '6LcuQxcrAAAAAFhF3hKt7frLi7BTgzpX98sLXBFR';
+/* ───────── reCAPTCHA v3 ───────── */
+$token = $_POST['recaptcha_response'];
+$resp  = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$token");
+$rec   = json_decode($resp, true);
 
-$verify  = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$recaptcha");
-$captcha = json_decode($verify);
+if (!$rec['success']            ||
+     $rec['action']!=='cotizar' ||
+     $rec['score'] < 0.3) responder('Fallo reCAPTCHA',403);
 
-$umbral = 0.30;
-if (!$captcha->success)               responder("Verificación reCAPTCHA fallida.", 403);
-if ($captcha->action !== 'cotizar')   responder("Acción reCAPTCHA no coincide.",   403);
-if ($captcha->score  < $umbral)       responder("Score bajo de reCAPTCHA ({$captcha->score}).", 403);
+/* ───────── Cuerpo de texto ───────── */
+$msg  = "Nueva solicitud de cotización:\n\n";
+$msg .= "Nombre: $nombre\nCorreo: $email\nTeléfono: $telefono\n";
+$msg .= "Tipo de proyecto: $tipo\n\nDescripción:\n$desc\n";
 
-/* ───────── Cuerpo del mensaje ───────── */
-$mensaje  = "Nueva solicitud de cotización desde CONAVRE:\n\n";
-$mensaje .= "Nombre: $nombre\n";
-$mensaje .= "Correo: $email\n";
-$mensaje .= "Teléfono: $telefono\n";
-$mensaje .= "Tipo de Proyecto: $tipo\n";
-$mensaje .= "Descripción:\n$descripcion\n";
+/* ───────── Adjuntos ───────── */
+$boundary = '_'.md5(uniqid());
+$adjuntos = '';
 
-/* ───────── Adjuntos (opcional) ───────── */
-$boundary = "_Parte_" . md5(uniqid());   // mismo boundary para todo
-$adjunto  = '';
+if (isset($_FILES['archivo']) && $_FILES['archivo']['error'][0]!==UPLOAD_ERR_NO_FILE){
+    $n = count($_FILES['archivo']['name']);
 
-if (isset($_FILES['archivo']) && $_FILES['archivo']['error'][0] !== UPLOAD_ERR_NO_FILE) {
+    for ($i=0;$i<$n;$i++){
+        if ($_FILES['archivo']['error'][$i]!==UPLOAD_ERR_OK) continue;
 
-    $total = count($_FILES['archivo']['name']);
+        $name = basename($_FILES['archivo']['name'][$i]);
+        $tmp  = $_FILES['archivo']['tmp_name'][$i];
+        $size = $_FILES['archivo']['size'][$i];
+        $ext  = strtolower(pathinfo($name,PATHINFO_EXTENSION));
 
-    for ($i = 0; $i < $total; $i++) {
-        if ($_FILES['archivo']['error'][$i] === UPLOAD_ERR_OK) {
+        if (!in_array($ext,$permitidas)) responder("Extensión no permitida ($name)",400);
+        if ($size>$max_size)              responder("Archivo '$name' supera 5 MB",400);
 
-            $nombre_original = basename($_FILES['archivo']['name'][$i]);
-            $extension       = strtolower(pathinfo($nombre_original, PATHINFO_EXTENSION));
-            $archivo_temp    = $_FILES['archivo']['tmp_name'][$i];
-            $archivo_size    = $_FILES['archivo']['size'][$i];
+        $data = chunk_split(base64_encode(file_get_contents($tmp)));
+        $mime = mime_content_type($tmp);
 
-            /* Validaciones */
-            if (!in_array($extension, $extensiones_permitidas)) {
-                responder("Tipo de archivo no permitido: $nombre_original", 400);
-            }
-            if ($archivo_size > $limite_archivo) {
-                responder("El archivo '$nombre_original' supera los 5 MB permitidos.", 400);
-            }
-
-            $tipo_mime      = mime_content_type($archivo_temp);
-            $contenido      = chunk_split(base64_encode(file_get_contents($archivo_temp)));
-            $nombre_archivo = time()."_$i_".preg_replace('/[^a-zA-Z0-9._-]/','',$nombre_original);
-
-            /* Fragmento MIME para cada adjunto */
-            $adjunto .= "--$boundary\r\n";
-            $adjunto .= "Content-Type: $tipo_mime; name=\"$nombre_archivo\"\r\n";
-            $adjunto .= "Content-Transfer-Encoding: base64\r\n";
-            $adjunto .= "Content-Disposition: attachment; filename=\"$nombre_archivo\"\r\n\r\n";
-            $adjunto .= $contenido . "\r\n";
-        }
+        $adjuntos .= "--$boundary\r\n";
+        $adjuntos .= "Content-Type: $mime; name=\"$name\"\r\n";
+        $adjuntos .= "Content-Transfer-Encoding: base64\r\n";
+        $adjuntos .= "Content-Disposition: attachment; filename=\"$name\"\r\n\r\n";
+        $adjuntos .= $data."\r\n";
     }
 }
 
-/* ───────── Encabezados y cuerpo final ───────── */
+/* ───────── Encabezados + cuerpo MIME ───────── */
 $headers  = "MIME-Version: 1.0\r\n";
 $headers .= "From: $nombre <$email>\r\n";
 $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
 
 $cuerpo  = "--$boundary\r\n";
-$cuerpo .= "Content-Type: text/plain; charset=UTF-8\r\n";
-$cuerpo .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
-$cuerpo .= $mensaje . "\r\n";
+$cuerpo .= "Content-Type: text/plain; charset=UTF-8\r\n\r\n";
+$cuerpo .= $msg."\r\n";
+if ($adjuntos) $cuerpo .= $adjuntos;
+$cuerpo .= "--$boundary--";
 
-if ($adjunto) $cuerpo .= $adjunto;
-
-$cuerpo .= "--$boundary--\r\n";
-
-/* ───────── Enviar correo ───────── */
-if (mail($destino, $asunto, $cuerpo, $headers)) {
-    responder("Cotización enviada correctamente.");
-} else {
-    responder("Error al enviar el correo. Intente más tarde.", 500);
-}
+/* ───────── Enviar ───────── */
+if (mail($destino,$asunto,$cuerpo,$headers))
+     responder('Cotización enviada correctamente.');
+else responder('Error al enviar el correo',500);
 ?>
