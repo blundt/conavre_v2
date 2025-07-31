@@ -77,7 +77,17 @@ document.addEventListener('DOMContentLoaded', () => {
     resp.style.display = 'block';
     texto.textContent  = '⏳ Enviando solicitud…';
 
+        /* 1) FormData con los campos normales */
     const datos = new FormData(form);
+
+    /* 2) Añadimos los archivos que gestiona FilePond */
+    const pond = FilePond.find(document.getElementById('archivo'));
+    if (pond) {
+      pond.getFiles().forEach(f =>
+       // ‘archivo[]’ hace que PHP agrupe todos en $_FILES['archivo']
+       datos.append('archivo[]', f.file, f.file.name)
+      );
+    }
     try {
       const r = await fetch('/php/enviar-cotizacion.php',{method:'POST',body:datos});
       const j = await r.json();
@@ -114,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
   );
 
   FilePond.setOptions({
-    name: 'archivo',          // <input name="archivo">
+    name: 'archivo[]',        // para que FilePond genere el array correcto
     allowMultiple: true,
     maxFileSize: '5MB',
     server: false,
