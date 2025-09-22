@@ -197,4 +197,12 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Nuevo artículo -->
+  <url>
+    <loc>https://www.conavre.com/blog/trimaranes-conavre.html</loc>
+    <lastmod>2025-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
