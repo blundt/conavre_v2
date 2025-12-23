@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#007bff">
+  <title>Ingeniería Naval y Cálculos para Naves Menores | CONAVRE Chile</title>
+  <link rel="canonical" href="https://www.conavre.com/ingenieria-naval-calculos-directemar.html">
+  <meta name="description" content="Servicio de ingeniería naval para naves menores: cálculo de arqueo (AB/AN), manuales de estabilidad, memorias estructurales, líneas de ejes y documentación técnica para DGTM y DIRECTEMAR en Chile.">
+
+  <!-- OpenGraph y Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ingeniería Naval y Cálculos para Naves Menores | CONAVRE">
+  <meta property="og:description" content="Arqueo, estabilidad, estructura, líneas de ejes y documentación técnica para cumplir con los requisitos de DGTM y DIRECTEMAR en naves menores.">
+  <meta property="og:image" content="https://www.conavre.com/img/og-image-conavre.jpg">
+  <meta property="og:url" content="https://www.conavre.com/ingenieria-naval-calculos-directemar.html">
+  <meta property="og:site_name" content="CONAVRE">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ingeniería Naval y Cálculos para Naves Menores | CONAVRE">
+  <meta name="twitter:description" content="Servicio especializado de ingeniería naval y cálculos técnicos para naves menores: arqueo, estabilidad, estructura y líneas de ejes.">
+  <meta name="twitter:image" content="https://www.conavre.com/img/og-image-conavre.jpg">
+
+  <!-- Favicon estándar -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/img/favicon_192x192.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Estilos globales -->
+  <link rel="stylesheet" href="css/variables_conavre.css">
+  <link rel="stylesheet" href="css/global_styles_conavre.css">
+  <link rel="stylesheet" href="css/servicio_styles_conavre.css">
+  
+  <script src="js/main.js" defer></script>
+
+  <!-- Estilos específicos (inline, como pediste) -->
+  <style>
+    .detalle-ingenieria-completo {
+      display: none;
+      margin-top: 2rem;
+    }
+    .detalle-ingenieria-completo.activo {
+      display: block;
+    }
+    .btn-toggle-detalle {
+      margin-top: 1.5rem;
+    }
+
+    /* Pequeños ajustes para galería dentro del look & feel actual */
+    .servicio-ingenieria-galeria .services-grid {
+      margin-top: 1.5rem;
+    }
+    .servicio-ingenieria-galeria figure.service-card {
+      margin: 0;
+    }
+    .servicio-ingenieria-galeria figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+      line-height: 1.35;
+      opacity: 0.95;
+    }
+
+    /* ✅ Galería colapsable (solo imágenes) */
+    .galeria-ingenieria { display: none; margin-top: 1.5rem; }
+    .galeria-ingenieria.activo { display: block; }
+    .btn-toggle-galeria { margin-top: 1rem; }
+
+    /* ✅ Previews compactas para que la página no se alargue */
+    .servicio-ingenieria-galeria figure.service-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      border-radius: 12px;
+    }
+
+    @media (min-width: 900px) {
+      .servicio-ingenieria-galeria figure.service-card img { height: 260px; }
+    }
+    /* ✅ Layout garantizado para la galería (no depende de .mini-portafolio) */
+.servicio-ingenieria-galeria .services-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+@media (min-width: 760px){
+  .servicio-ingenieria-galeria .services-grid{
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas = se leen mejor “hojas” */
+  }
+}
+
+/* ✅ Tarjeta simple (si tu CSS no define .service-card fuera de mini-portafolio) */
+.servicio-ingenieria-galeria figure.service-card{
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  padding: 14px;
+  margin: 0;
+}
+
+/* ✅ Para imágenes tipo hoja: se ven completas (sin recorte) */
+.servicio-ingenieria-galeria figure.service-card img{
+  width: 100%;
+  height: auto;
+  max-height: 520px;      /* controla el alto para no “inflar” la página */
+  object-fit: contain;     /* muestra toda la hoja */
+  background: rgba(0,0,0,0.04); /* letterbox suave */
+  border-radius: 10px;
+  padding: 8px;            /* aire para que se vea pro */
+  display: block;
+}
+
+  /* Un poco más alto en desktop */
+  @media (min-width: 1100px){
+    .servicio-ingenieria-galeria figure.service-card img{
+      max-height: 620px;
+    }
+  }
+
+  /* Bloque de botones centrado */
+  .servicio-ingenieria-cta {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .servicio-ingenieria-cta p {
+    font-size: 1.15em;
+    max-width: 720px;
+    margin: 0 auto 1.2rem auto;
+    color: var(--gris-texto);
+    line-height: 1.6;
+  }
+
+  /* Separación clara antes del footer */
+  .servicio-ingenieria-cta-final {
+    margin-bottom: 5rem; /* 👈 espacio blanco real antes del footer */
+  }
+
+  /* Botones alineados y consistentes */
+  .servicio-ingenieria-cta .btn,
+  .servicio-ingenieria-cta .btn-secondary {
+    margin: 0.4rem 0.4rem;
+  }
+
+  /* Botón de detalle: más liviano visualmente */
+  .btn-toggle-detalle {
+    background-color: transparent;
+    color: var(--azul-marca);
+    border: 2px dashed var(--azul-marca);
+  }
+
+  .btn-toggle-detalle:hover {
+    background-color: var(--azul-marca);
+    color: white;
+  }
+
+  </style>
+
+  <!-- Schema principal del servicio -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Ingeniería naval y cálculos para naves menores DIRECTEMAR",
+    "name": "Ingeniería Naval y Cálculos para Naves Menores",
+    "description": "Servicio de ingeniería naval especializado en cálculo de arqueo (AB/AN), manuales de estabilidad intacta y dañada, memorias estructurales, diseño de líneas de ejes y documentación técnica para DGTM y DIRECTEMAR en Chile.",
+    "provider": {
+      "@type": "Organization",
+      "name": "CONAVRE",
+      "url": "https://www.conavre.com",
+      "logo": "https://www.conavre.com/img/logo.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Concon-Quintero Km2 - Parque Industrial Aconcagua, Lote #4",
+        "addressLocality": "Quintero",
+        "addressRegion": "Valparaíso",
+        "addressCountry": "CL"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+56 9 9821 9394",
+        "contactType": "customer service",
+        "areaServed": "CL",
+        "availableLanguage": ["Español"]
+      }
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Chile"
+    }
+  }
+  </script>
+
+  <!-- BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://www.conavre.com/index.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Servicios",
+        "item": "https://www.conavre.com/servicios-conavre.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Ingeniería Naval y Cálculos"
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQ específicas de este servicio -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué tipo de cálculos navales realizan para naves menores?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Realizamos cálculo de arqueo bruto y neto (AB/AN) según el Reglamento Nacional de Arqueo, manuales de estabilidad intacta y, cuando corresponde, dañada; memorias de cálculo estructural; diseño y verificación de líneas de ejes; y levantamiento o digitalización de planos para cumplir con los requisitos de DGTM y DIRECTEMAR."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Pueden ayudar a regularizar una embarcación ya construida?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Apoyamos la regularización de embarcaciones existentes mediante levantamiento dimensional, digitalización de planos en 2D/3D, elaboración de cálculos de arqueo, manuales de estabilidad y memorias estructurales, con el objetivo de actualizar la carpeta técnica ante la Autoridad Marítima."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Trabajan sólo con embarcaciones nuevas o también con modificaciones?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Trabajamos tanto con proyectos de embarcaciones nuevas como con modificaciones, conversiones o ampliaciones que impacten en el arqueo, estabilidad, estructura o sistemas de propulsión de la nave. Nuestro objetivo es anticipar requisitos y evitar observaciones en las instancias de revisión y aprobación."
+        }
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header class="header-conavre">
+  <div class="container header-flex">
+    <a href="index.html" class="logo-link">
+      <img src="img/logo.webp" alt="Logo oficial de CONAVRE, astillero chileno" class="logo-header">
+    </a>
+    <nav class="nav-principal" id="nav-principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="servicios-conavre.html">Servicios</a></li>
+        <li><a href="construccion-embarcaciones.html">Construcción de Embarcaciones</a></li>
+        <li><a href="portafolio.html">Portafolio</a></li>
+        <li><a href="index.html#cotiza">Cotiza</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+  </div>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="servicios-conavre.html">Servicios</a></li>
+    <li>Ingeniería Naval y Cálculos</li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- HERO PRINCIPAL -->
+  <section class="hero-servicios animar-aparicion">
+    <div class="container">
+      <h1>Ingeniería Naval y Cálculos para Naves Menores DIRECTEMAR</h1>
+      <p class="subtitulo-servicio">
+        Arqueo, estabilidad, estructura, líneas de ejes y documentación técnica para cumplir con los requisitos de DGTM y DIRECTEMAR en Chile.
+      </p>
+      <a href="index.html#cotiza" class="btn animar-cta">📩 Solicitar evaluación técnica</a>
+    </div>
+  </section>
+
+  <!-- RESUMEN CORTO DEL SERVICIO -->
+  <section class="servicio-ingenieria servicio-ingenieria-resumen">
+    <div class="container">
+      <h2>Servicio de ingeniería naval para naves menores</h2>
+      <p>
+        En CONAVRE apoyamos a armadores, astilleros y operadores que necesitan <strong>cálculos y documentación técnica</strong> para
+        completar sus proyectos de naves menores ante la Autoridad Marítima, sin detener la construcción ni modificar todo el diseño.
+      </p>
+      <p>
+        Combinamos la experiencia práctica de astillero con el trabajo de <strong>ingenieros navales acreditados</strong>, para que tu
+        embarcación no sólo “pase por carpeta”, sino que también funcione bien en el mar y sea mantenible a largo plazo.
+      </p>
+
+      <div class="servicio-ingenieria-grid">
+        <div class="servicio-ingenieria-listas">
+          <h3>En pocas palabras, ¿qué hacemos?</h3>
+          <ul class="lista-servicio-detalle">
+            <li>Cálculo de <strong>arqueo bruto y neto (AB/AN)</strong> según TM-026.</li>
+            <li>Elaboración de <strong>manuales de estabilidad</strong> (intacta y, cuando aplica, dañada).</li>
+            <li>Desarrollo de <strong>memorias de cálculo estructural</strong> y escantillonado.</li>
+            <li>Diseño y verificación de <strong>líneas de ejes</strong> y camas de motor.</li>
+            <li><strong>Levantamiento y digitalización de planos</strong> (2D/3D) cuando no existe documentación actualizada.</li>
+            <li><strong>Regularización de embarcaciones existentes</strong> y asesoría para nuevas construcciones o modificaciones.</li>
+          </ul>
+        </div>
+
+        <div class="servicio-ingenieria-texto">
+          <h3>Casos típicos donde intervenimos</h3>
+          <ul class="lista-servicio-detalle">
+            <li>Embarcaciones de <strong>8 a 18 metros</strong> que agregan caseta, cambian motor o aumentan capacidad.</li>
+            <li>Proyectos de <strong>turismo costero o transporte local de pasajeros</strong>.</li>
+            <li><strong>Barcazas y naves de apoyo</strong> que transportan carga, pallets o equipos en cubierta.</li>
+          </ul>
+          <p>
+            Si estás en cualquiera de estos escenarios, probablemente ya te han mencionado arqueo, estabilidad o memorias estructurales.
+            Ahí es donde podemos ayudarte.
+          </p>
+        </div>
+      </div>
+
+      <!-- ✅ GALERÍA (SOLO IMÁGENES, COLAPSABLE) -->
+<section class="servicio-ingenieria servicio-ingenieria-galeria">
+  <div class="container">
+    <h2>Ejemplos reales de entregables</h2>
+    <p class="subtitulo-servicio">
+      Planos y reportes técnicos que desarrollamos para arqueo, estabilidad,
+      estructura y líneas de ejes.
+    </p>
+
+    <div class="servicio-ingenieria-cta">
+      <button
+        id="btn-toggle-galeria"
+        class="btn btn-toggle-galeria"
+        type="button"
+        aria-expanded="false"
+      >
+        🖼️ Ver ejemplos visuales
+      </button>
+    </div>
+
+    <div id="galeria-ingenieria" class="galeria-ingenieria" aria-hidden="true">
+      <div class="services-grid">
+
+        <figure class="service-card">
+          <img
+            src="img/ingenieria/c-III_vista-general.webp"
+            alt="Plano vista general de embarcación pesquera modelo C-IIId con distribución general y dimensiones principales"
+            loading="lazy"
+          >
+          <figcaption>
+            <strong>Plano general / distribución</strong><br>
+            Vista general del casco y disposición principal.
+          </figcaption>
+        </figure>
+
+        <figure class="service-card">
+          <img
+            src="img/ingenieria/linea-de-eje.webp"
+            alt="Plano técnico de línea de ejes con detalles de eje, cono y elementos asociados"
+            loading="lazy"
+          >
+          <figcaption>
+            <strong>Línea de ejes</strong><br>
+            Diseño y verificación de componentes de propulsión.
+          </figcaption>
+        </figure>
+
+        <figure class="service-card">
+          <img
+            src="img/ingenieria/curvas-cruzadas.webp"
+            alt="Curvas cruzadas de estabilidad utilizadas en el análisis de estabilidad de naves menores"
+            loading="lazy"
+          >
+          <figcaption>
+            <strong>Curvas cruzadas</strong><br>
+            Base para el análisis de estabilidad en distintas condiciones.
+          </figcaption>
+        </figure>
+
+        <figure class="service-card">
+          <img
+            src="img/ingenieria/analisis-estabilidad.webp"
+            alt="Gráfico de análisis de estabilidad con curva GZ y criterios aplicables a DGTM"
+            loading="lazy"
+          >
+          <figcaption>
+            <strong>Reporte de estabilidad</strong><br>
+            Curva GZ y verificación de criterios normativos.
+          </figcaption>
+        </figure>
+
+      </div>
+
+      <div class="servicio-ingenieria-cta">
+        <a href="index.html#cotiza" class="btn-secondary">
+          📩 Enviar mi proyecto para evaluación técnica
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ✅ FIN GALERÍA -->
+
+<!-- CTA principal -->
+<div class="servicio-ingenieria-cta">
+  <p>
+    ¿Quieres saber si tu proyecto necesita cálculos o documentación adicional?
+  </p>
+  <a href="index.html#cotiza" class="btn">
+    📩 Consultar por mi embarcación
+  </a>
+</div>
+
+<!-- CTA secundaria + separación antes del footer -->
+<div class="servicio-ingenieria-cta servicio-ingenieria-cta-final">
+  <button
+    id="btn-toggle-detalle"
+    class="btn btn-toggle-detalle"
+    type="button"
+    aria-expanded="false"
+  >
+    📄 Ver descripción completa del servicio
+  </button>
+</div>
+
+    </div>
+  </section>
+
+  <!-- VERSIÓN LARGA / DETALLADA (COLAPSADA POR DEFECTO) -->
+  <section id="detalle-ingenieria-completo" class="detalle-ingenieria-completo">
+    <!-- CONTEXTO Y PROBLEMA -->
+    <section class="servicio-ingenieria">
+      <div class="container">
+        <div class="servicio-ingenieria-intro servicio-ingenieria-grid">
+          <div class="servicio-ingenieria-texto">
+            <h2>Cuando la normativa se vuelve el cuello de botella</h2>
+            <p>
+              Muchas embarcaciones menores —especialmente entre <strong>8 y 18 metros</strong>— quedan en un punto crítico:
+              tienen suficiente volumen para exigir <strong>arqueo real, manual de estabilidad, memoria estructural y planos completos</strong>,
+              pero sus armadores o constructores no siempre cuentan con un equipo de ingeniería naval que prepare la documentación que solicita la Autoridad Marítima.
+            </p>
+            <p>
+              En CONAVRE combinamos nuestra experiencia como astillero con el trabajo de <strong>ingenieros navales acreditados</strong>
+              para entregar cálculos y documentación listos para ser presentados ante DGTM y DIRECTEMAR, reduciendo observaciones,
+              reprocesos y retrasos en la etapa de aprobación.
+            </p>
+          </div>
+          <div class="servicio-ingenieria-texto">
+            <h3>Enfoque crítico y práctico</h3>
+            <p>
+              No sólo calculamos números: revisamos si el diseño tiene sentido para el uso real de la embarcación, evaluamos los impactos de
+              <strong>cambios de caseta, redistribución de pesos, modificaciones de equipos o motorización</strong> y proponemos mejoras cuando es necesario.
+            </p>
+            <p>
+              Nuestro objetivo es que la embarcación sea <strong>segura, aprobable y operable</strong>, evitando sorpresas
+              al momento de las inspecciones o al cargar el proyecto en la plataforma de naves menores.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUÉ PODEMOS DESARROLLAR -->
+    <section class="servicio-ingenieria">
+      <div class="container">
+        <h2>¿Qué podemos desarrollar por ti?</h2>
+        <div class="servicio-ingenieria-grid">
+          <div class="servicio-ingenieria-listas">
+            <ul class="lista-servicio-detalle">
+              <li>
+                <strong>Cálculo de Arqueo (AB/AN)</strong> según Reglamento Nacional de Arqueo (TM-026),
+                identificando espacios cerrados y excluidos y evaluando el impacto de cambios de diseño.
+              </li>
+              <li>
+                <strong>Manual de Estabilidad</strong> (intacta y, cuando aplica, dañada) para naves menores con cubierta,
+                considerando condiciones de operación reales (pasajeros, carga, pesca, equipos en cubierta).
+              </li>
+              <li>
+                <strong>Memoria de cálculo estructural y escantillonado</strong> para cascos en PRFV y estructuras asociadas,
+                alineada a normativa y perfil de misión de la embarcación.
+              </li>
+              <li>
+                <strong>Diseño y verificación de líneas de ejes</strong>, apoyos, sellos, camas de motor y su integración con la estructura del casco.
+              </li>
+              <li>
+                <strong>Levantamiento y digitalización de planos</strong> (2D/3D) y generación de archivo geométrico del casco
+                cuando no existe documentación actualizada.
+              </li>
+              <li>
+                <strong>Regularización de embarcaciones existentes</strong> que requieren actualizar su carpeta técnica,
+                ya sea por modificaciones, cambios de uso o exigencias normativas nuevas.
+              </li>
+              <li>
+                <strong>Asesoría en etapa temprana</strong> para evitar saltar innecesariamente de categoría de arqueo y anticipar
+                qué documentación pedirá la Autoridad antes de construir o modificar.
+              </li>
+            </ul>
+          </div>
+          <div class="servicio-ingenieria-texto">
+            <h3>Especial foco en embarcaciones de menor tamaño</h3>
+            <p>
+              Nuestro enfoque está especialmente orientado a <strong>embarcaciones entre 8 y 18 metros</strong>, donde pequeños cambios en
+              diseño de casco o superestructura pueden modificar:
+            </p>
+            <ul class="lista-servicio-detalle">
+              <li>El arqueo bruto y neto (AB/AN).</li>
+              <li>Los criterios de estabilidad exigidos.</li>
+              <li>La dotación mínima o perfil de tripulación.</li>
+              <li>El tipo y profundidad de documentación requerida por DGTM y DIRECTEMAR.</li>
+            </ul>
+            <p>
+              Analizamos críticamente cada proyecto, proponiendo ajustes de diseño cuando es necesario y acompañando al armador desde la idea inicial
+              hasta la entrega de planos y memorias para su revisión por la Autoridad Marítima.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASOS FRECUENTES -->
+    <section class="servicio-ingenieria servicio-ingenieria-casos">
+      <div class="container">
+        <h2>Casos frecuentes en los que podemos ayudarte</h2>
+        <div class="servicio-ingenieria-grid">
+          <div class="servicio-ingenieria-texto">
+            <h3>Pesca artesanal y trabajo costero (8–12 m)</h3>
+            <p>
+              Embarcaciones que nacen como “botes abiertos” y terminan con casetas, ampliaciones o cambios de motor que alteran su arqueo y estabilidad.
+              Te ayudamos a ordenar la documentación, ajustar el diseño y preparar los cálculos necesarios para regularizar.
+            </p>
+          </div>
+          <div class="servicio-ingenieria-texto">
+            <h3>Turismo costero y transporte de pasajeros</h3>
+            <p>
+              Proyectos de turismo, paseos o transporte local donde la estabilidad, la distribución de personas en cubierta
+              y la seguridad adquieren un rol central. Trabajamos los manuales y memorias para respaldar la operación ante la Autoridad.
+            </p>
+          </div>
+          <div class="servicio-ingenieria-texto">
+            <h3>Barcazas de apoyo y naves de servicio</h3>
+            <p>
+              Embarcaciones de apoyo a faenas, barcazas pequeñas o artefactos navales que transportan pallets, equipos o carga en cubierta.
+              Desarrollamos manuales de estabilidad y, cuando corresponde, criterios de estabilidad dañada y sujeción de carga.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO TRABAJAMOS -->
+    <section class="servicio-ingenieria servicio-ingenieria-flujo">
+      <div class="container">
+        <h2>Cómo trabajamos tu proyecto</h2>
+        <div class="servicio-ingenieria-grid">
+          <div class="servicio-ingenieria-listas">
+            <ol class="lista-servicio-detalle">
+              <li>
+                <strong>Diagnóstico inicial</strong><br>
+                Revisamos dimensiones principales, uso previsto, zona de operación y documentación existente (si la hay).
+              </li>
+              <li>
+                <strong>Definición de alcances</strong><br>
+                Definimos qué se requiere realmente: arqueo, estabilidad, estructura, líneas de ejes, levantamiento de planos, o un paquete completo.
+              </li>
+              <li>
+                <strong>Desarrollo de cálculos y planos</strong><br>
+                Modelamos, calculamos y generamos memorias y planos siguiendo los criterios vigentes de DGTM y DIRECTEMAR.
+              </li>
+              <li>
+                <strong>Revisión crítica y ajustes</strong><br>
+                Antes de entregar, revisamos la coherencia global del proyecto y sugerimos ajustes de diseño si detectamos riesgos o ineficiencias.
+              </li>
+              <li>
+                <strong>Acompañamiento en la presentación</strong><br>
+                Entregamos documentación estructurada para su carga en la plataforma que utilice tu inspector o gestor de proyecto.
+              </li>
+            </ol>
+          </div>
+          <div class="servicio-ingenieria-texto">
+            <h3>Documentación pensada para la realidad del astillero</h3>
+            <p>
+              Sabemos lo que significa construir, modificar y reparar en un astillero real. Por eso, la documentación que generamos
+              está pensada tanto para cumplir con la Autoridad como para ser ejecutable en taller: espesores, laminados, refuerzos,
+              detalles de instalación y secuencias de trabajo claros.
+            </p>
+            <p>
+              El objetivo final es que la embarcación no sólo “pase por carpeta”, sino que funcione bien en el mar y pueda mantenerse
+              correctamente a lo largo del tiempo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ ESPECÍFICAS EN PÁGINA -->
+    <section class="faq-servicios">
+      <div class="container">
+        <h2>Preguntas frecuentes sobre este servicio</h2>
+
+        <div class="faq-item">
+          <h3>¿Pueden trabajar sólo con los cálculos si la embarcación se construye en otro astillero?</h3>
+          <p>
+            Sí. Podemos encargarnos exclusivamente de los cálculos y memorias, coordinando con el astillero que construye
+            o modifica la embarcación. En esos casos, trabajamos con sus planos, levantamientos y antecedentes disponibles,
+            proponiendo ajustes cuando detectamos inconsistencias con la normativa o con el uso previsto.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Necesitan siempre planos 3D para partir?</h3>
+          <p>
+            No necesariamente. Podemos trabajar con planos 2D, levantamientos manuales o documentación parcial.
+            Sin embargo, cuando se requiere un nivel de precisión mayor —especialmente en estabilidad o arqueo fino—
+            es recomendable contar con un modelo geométrico más completo, que también podemos ayudar a generar.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Este servicio es sólo para proyectos nuevos?</h3>
+          <p>
+            No. De hecho, muchos encargos vienen de embarcaciones ya construidas que necesitan regularizarse,
+            actualizar su carpeta técnica, o que han cambiado de uso o configuración y requieren nuevos cálculos
+            de arqueo, estabilidad o estructura.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL DETALLADA -->
+    <section class="cta-servicios animar-aparicion">
+      <h3>¿Tienes una embarcación en diseño, construcción o regularización?</h3>
+      <p>
+        Te ayudamos con los cálculos y planos necesarios para cumplir con DGTM y DIRECTEMAR,
+        sin perder de vista la realidad operativa de tu proyecto.
+      </p>
+      <a href="index.html#cotiza" class="btn">📩 Solicitar evaluación técnica</a>
+    </section>
+  </section>
+
+</main>
+
+<footer class="footer-conavre">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <img src="img/logo.webp" alt="Logo oficial de CONAVRE, astillero chileno">
+      <p>Especialistas en construcción, reparación y diseño de embarcaciones en fibra de vidrio.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Enlaces Rápidos</h4>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="construccion-embarcaciones.html#modelos">Modelos de Embarcaciones</a></li>
+        <li><a href="servicios-conavre.html">Servicios</a></li>
+        <li><a href="portafolio.html">Portafolio</a></li>
+        <li><a href="index.html#cotiza">Cotización</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-contacto">
+      <h4>Contacto</h4>
+      <p>Av. Concon-Quintero Km2 - Parque Industrial Aconcagua, Lote #4<br>Quintero, Valparaíso</p>
+      <p>+56 9 9821 9394</p>
+      <p><a href="mailto:contacto@conavre.com">contacto@conavre.com</a></p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/astilleroconavre" target="_blank">
+          <img src="img/social/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/share/rHzJa6TBPyL7xrec" target="_blank">
+          <img src="img/social/facebook.png" alt="Facebook">
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copy">
+    <p>&copy; 2025 Conavre. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- ✅ Scripts al final (DOM listo) -->
+<script>
+  (function() {
+    function init() {
+      // Toggle galería
+      var btnG = document.getElementById('btn-toggle-galeria');
+      var gal = document.getElementById('galeria-ingenieria');
+      if (btnG && gal) {
+        btnG.addEventListener('click', function() {
+          var activo = gal.classList.toggle('activo');
+          btnG.setAttribute('aria-expanded', activo ? 'true' : 'false');
+          gal.setAttribute('aria-hidden', activo ? 'false' : 'true');
+          btnG.textContent = activo ? '🖼️ Ocultar ejemplos visuales' : '🖼️ Ver ejemplos visuales';
+        });
+      }
+
+      // Toggle detalle completo
+      var btn = document.getElementById('btn-toggle-detalle');
+      var detalle = document.getElementById('detalle-ingenieria-completo');
+      if (btn && detalle) {
+        btn.addEventListener('click', function() {
+          var activo = detalle.classList.toggle('activo');
+          btn.setAttribute('aria-expanded', activo ? 'true' : 'false');
+          btn.textContent = activo
+            ? '🔽 Ocultar descripción completa del servicio'
+            : '📄 Ver descripción completa del servicio';
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+
+</body>
+</html>

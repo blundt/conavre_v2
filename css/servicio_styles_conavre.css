@@ -417,3 +417,8 @@
   }
 }
 
+/* Separación clara entre badges y botón en tarjeta de Ingeniería */
+.servicio-card .btn-toggle-detalle {
+  margin-top: 16px;
+}
+
